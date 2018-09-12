@@ -23,6 +23,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="dropdown @(ViewContext.RouteData.Values["Action"].ToString().ToLower().Contains("Produto") ? "ativo" : "")">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Produtos <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="~/Produto/Cadastrar">Gestão Futebolística</a></li>
+                        </ul>
+                    </li>
+
+                    <li>@Html.ActionLink("Preços", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Logar", "Autenticacao")</li>
+
                 </ul>
             </div>
         </div>
