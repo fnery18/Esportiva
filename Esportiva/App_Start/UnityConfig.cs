@@ -12,11 +12,13 @@ namespace Esportiva
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer();
+            var container = new UnityContainer();
 
             container.RegisterType<IHomeBLL, HomeBLL>();
+            container.RegisterType<IAutenticacaoBLL, AutenticacaoBLL>();
 
             container.RegisterType<IHomeDAL, HomeDAL>();
+            container.RegisterType<IAutenticacaoDAL, AutenticacaoDAL>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

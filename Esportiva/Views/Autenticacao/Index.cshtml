@@ -1,0 +1,88 @@
+﻿@model Esportiva.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<div class="hidden">
+    <p id="mensagem-retorno">@Model.Mensagem</p>
+</div>
+
+<div id="LoginForm">
+    <div class="container">
+        <h1 class="form-heading">Administrativo</h1>
+        <div class="login-form">
+            <div class="main-div">
+                <div class="titulo-form">
+                    <h2>Administrativo</h2>
+                    <p>Porfavor digite o usuário e a senha.</p>
+                </div>
+                <form id="form-login" action="Autentica" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtUsuario" name="usuario"  required placeholder="Usuário">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="senha" required id="txtSenha" placeholder="Senha">
+                    </div>
+                    <div class="nova-conta">
+                        <p data-toggle="modal" data-target="#modal-conta">Criar nova conta</p>
+                    </div>
+                    <button class="btn btn-primary" id="btn-login">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-conta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="titulo-padrao">
+                    Nova Conta
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-user"></i>
+                                <label>Usuário: </label>
+                                <input type="text" id="txtNovoUsuario" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-lock"></i>
+                                <label>Senha: </label>
+                                <input type="password" id="txtNovaSenha" class="form-control" />
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-padrao" id="btn-nova-conta">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <link href="~/Content/css/form.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/Autenticacao/autentica.js"></script>
+}
+
+

@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - E-Sportiva</title>
+    @RenderSection("styles")
     <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/fontawesome-all.min.css" rel="stylesheet" />
+    <script src="~/Scripts/util/alert.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -32,7 +35,17 @@
                     </li>
 
                     <li>@Html.ActionLink("Preços", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Logar", "Autenticacao")</li>
+
+                    @if (Session["user"] != null)
+                    {
+                        <li><a class="saudacao">Olá @Session["user"]</a></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Autenticacao")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Autenticacao")</li>
+                    }
+                   
 
                 </ul>
             </div>
@@ -40,14 +53,17 @@
     </div>
 
     <div class="container body-content">
+        <br /><br />    
+        <div id="alert-helper" style="z-index: 99999999;"></div>
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            
         </footer>
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts")
 </body>
 </html>

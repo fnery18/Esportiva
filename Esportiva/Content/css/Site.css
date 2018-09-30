@@ -1,16 +1,80 @@
-﻿:root {
+﻿@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+:root {
     --color-red: #ED174C;
     --color-dark-blue: #0B2C3B;
-    --color-light-blue: 006BB6;
+    --color-light-blue: #006BB6;
 }
 
+body {
+    font-family: 'Open Sans', sans-serif !important;
+    letter-spacing: 1px;
+}
 
-.logo-menu{
-    width:50px;
-    height:50px;
+.navbar-inverse {
+    background-color: var(--color-dark-blue) !important;
+}
+
+.titulo-padrao {
+    font-family: 'Open Sans', sans-serif !important;
+    letter-spacing: 1px;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--color-dark-blue);
+    font-weight: bold;
+}
+
+.modal-body {
+}
+
+.logo-menu {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
-.navbar-header{
+.navbar-header {
     background-color: var(--color-dark-blue) !important;
+}
+
+.alert {
+    padding-left: 30px;
+    margin: 30px;
+    position: fixed;
+    z-index: 9999999;
+    right: 0;
+    top: 0;
+}
+
+    .alert > .fa {
+        position: absolute;
+        left: -15px;
+        top: -15px;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        line-height: 35px;
+        text-align: center;
+        background: inherit;
+        border: inherit;
+    }
+
+.btn-padrao {
+    color: #fff;
+    background-color: var(--color-light-blue);
+    border-color: #ccc;
+    transition: all 1s;
+}
+
+    .btn-padrao:hover {
+        color: #808080;
+    }
+
+    
+.saudacao{
+    
+    color: #fff !important;
+}
+.saudacao:hover{
+    color: #fff;
 }

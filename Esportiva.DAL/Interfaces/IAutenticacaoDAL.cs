@@ -1,0 +1,11 @@
+﻿using System.Threading.Tasks;
+using Esportiva.MOD;
+
+namespace Esportiva.DAL.Interfaces
+{
+    public interface IAutenticacaoDAL
+    {
+        Task<bool> ValidaUsuario(LoginMOD usuario);
+        Task CadastrarUsuario(LoginMOD login);
+    }
+}
