@@ -24,6 +24,24 @@ namespace Esportiva.DAL
             }
         }
 
+        public async Task<LoginMOD> RetornarUsuario(string usuario)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region QUERY
+                const string query = @"
+                                SELECT 
+                                    * 
+                                FROM 
+                                    Usuarios 
+                                WHERE 
+                                    Usuario = @usuario";
+                #endregion
+
+                return await connection.QueryFirstOrDefaultAsync<LoginMOD>(query, new { usuario });
+            }
+        }
+
         public async Task<bool> ValidaUsuario(LoginMOD usuario)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())

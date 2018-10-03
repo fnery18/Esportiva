@@ -18,6 +18,11 @@ namespace Esportiva.BLL
             await _autenticacaoDAL.CadastrarUsuario(login);
         }
 
+        public async Task<LoginMOD> RetornarUsuario(string usuario)
+        {
+            return await _autenticacaoDAL.RetornarUsuario(usuario);
+        }
+
         public async Task<bool> ValidaUsuario(LoginMOD usuario)
         {
             return await _autenticacaoDAL.ValidaUsuario(usuario);

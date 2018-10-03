@@ -1,0 +1,88 @@
+﻿<div class="modal fade" id="modal-time" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="titulo-padrao">
+                    Editar Time
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-user"></i>
+                                <label>Nome: </label>
+                                <input type="text" id="txtNome" class="form-control" />
+                                <input type="hidden" id="txtNomeAntigo" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-flag-o"></i>
+                                <label>Nacionalidade: </label>
+                                <input type="text" id="txtNacionalidade" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-calendar"></i>
+                                <label>Data de fundação: </label>
+                                <input type="date" id="txtFundacao" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-hashtag"></i>
+                                <label>Sigla: </label>
+                                <input type="text" id="txtSigla" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <i class="fa fa-tint"></i>
+                                <label>Cor Primária: </label>
+                                <input type="color" id="txtCor1" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <i class="fa fa-tint"></i>
+                                <label>Cor secundária: </label>
+                                <input type="color" id="txtCor2" class="form-control" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <i class="fa fa-tint"></i>
+                                <label>Cor terciária: </label>
+                                <input type="color" id="txtCor3" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-padrao" id="btn-salvar-time">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

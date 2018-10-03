@@ -131,11 +131,14 @@
     <Content Include="Content\css\fontawesome-all.min.css" />
     <Content Include="Content\css\form.css" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="Content\css\times.css" />
     <Content Include="Content\images\logo-dark.jpg" />
     <Content Include="Content\images\logo-light.jpg" />
     <Content Include="Content\images\Logo.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Administrativo\Times\editar.js" />
+    <Content Include="Scripts\Administrativo\Times\index.js" />
     <Content Include="Scripts\Autenticacao\autentica.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -152,6 +155,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\AdministrativoController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,6 +163,7 @@
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SessionCheck.cs" />
+    <Compile Include="Models\TimeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +177,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Autenticacao\Index.cshtml" />
+    <Content Include="Views\Administrativo\Time\Index.cshtml" />
+    <Content Include="Views\Administrativo\Time\_TimesPartial.cshtml" />
+    <Content Include="Views\Administrativo\Time\_ModalNovoTimePartial.cshtml" />
+    <Content Include="Views\Administrativo\Time\_ModalExcluiTimePartial.cshtml" />
+    <Content Include="Views\Administrativo\Time\Editar.cshtml" />
+    <Content Include="Views\Administrativo\Time\_ModalEditarTimePartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

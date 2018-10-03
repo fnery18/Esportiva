@@ -1,0 +1,96 @@
+﻿.titulo-times {
+    margin-top: 50px;
+    font-size: 35px;
+    letter-spacing: 2px;
+}
+
+    .titulo-times p i {
+        font-size: 20px;
+        cursor: pointer;
+        color: var(--color-light-blue);
+        transition: all 1s;
+        opacity: 0.7;
+    }
+
+        .titulo-times p i:hover {
+            opacity: 1;
+            color: var(--color-dark-blue);
+        }
+
+
+/*card*/
+
+.time-card {
+    background-color: #ccc;
+    display: inline-block;
+    width: 250px;
+    padding: 10px;
+    height: 300px;
+    text-align: center;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin: 30px 50px 0 0;
+}
+
+
+.time-card-titulo {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.texto-card {
+    text-align: center;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+.time-card-info {
+    background-color: rgba(0,0,0,0.2);
+    margin-top: 20px;
+    padding: 10px;
+    height: 60%;
+}
+
+.time-card-opcoes {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.lixeira, .editar {
+    color: var(--color-dark-blue);
+    transition: all 1s;
+    cursor: pointer;
+}
+
+    .editar:hover {
+        color: var(--color-light-blue);
+    }
+
+    .lixeira:hover {
+        color: var(--color-red);
+    }
+
+
+.balao-opcoes {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-left: 3px solid #3498db;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 1s;
+    margin-right: 50px;
+}
+
+    .balao-opcoes:hover {
+        border-left: 3px solid var(--color-red);
+        color: var(--color-red);
+    }
+
+    .balao-opcoes p {
+        letter-spacing: 2px;
+        font-weight: bold;
+        margin-top: 10px;
+    }

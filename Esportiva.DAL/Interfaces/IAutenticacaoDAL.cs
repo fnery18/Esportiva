@@ -7,5 +7,6 @@ namespace Esportiva.DAL.Interfaces
     {
         Task<bool> ValidaUsuario(LoginMOD usuario);
         Task CadastrarUsuario(LoginMOD login);
+        Task<LoginMOD> RetornarUsuario(string usuario);
     }
 }

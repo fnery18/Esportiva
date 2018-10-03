@@ -1,0 +1,42 @@
+﻿@model List<Esportiva.Models.TimeModel>
+
+@if (Model.Count == 0)
+{
+    <div class="col-md-12">
+        <div class="time-card">
+            <div class="time-card-titulo">
+                <p class="texto-card">Ops! Nenhum time encontrado 
+                    <i style="color: var(--color-red);" class="fa fa-times-circle"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12">
+        @foreach (var time in Model)
+        {
+            <div class="time-card" style="background-color: @time.Cor1;">
+                <div class="time-card-titulo" style="background-color: @time.Cor2;">
+                    <p class="texto-card" style="color: @time.Cor3;">@time.Nome</p>
+                </div>
+
+                <div class="time-card-info" style="color: @time.Cor3;">
+                    <p class="descricao-card">Nacionalidade: @time.Nacionalidade</p>
+                    <p class="descricao-card">Data de fundação: @time.DataFundacao.ToShortDateString()</p>
+                    <p class="descricao-card">Sigla: @time.Sigla</p>
+                </div>
+
+                <div class="time-card-opcoes" style="color: @time.Cor3;">
+                    <p>Opções:
+                        <a target="_blank" href="/Administrativo/EditarTime?codigoTime=@time.Id" data-toggle="tooltip" data-original-title="Editar Time" data-placement="bottom"><i class="fa fa-edit editar"></i></a>
+                        <a  data-toggle="tooltip" data-original-title="Excluir Time" data-placement="bottom" data-opcao="excluir-time" data-id="@time.Id"><i class="fa fa-trash lixeira"></i></a>
+                    </p>
+                  
+                </div>
+            </div>
+        }
+    </div>
+ 
+}
