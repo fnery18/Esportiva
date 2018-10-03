@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Esportiva.DAL.Interfaces;
 using Esportiva.MOD;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -61,7 +62,7 @@ namespace Esportiva.DAL
                         time.Cor2,
                         time.Cor3,
                         time.Nacionalidade,
-                        time.DataFundacao,
+                        DataFundacao = time.DataFundacao,
                         codigoUsuario
                     });
             }
