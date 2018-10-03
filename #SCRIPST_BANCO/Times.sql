@@ -1,21 +1,16 @@
-USE [GuimaDB]
-GO
+CREATE TABLE TIMES(
+	Id int identity primary key, 
+	Nome VARCHAR(100) NOT NULL,
+	Nacionalidade varchar(100) NOT NULL,
+	DataFundacao datetime not null,
+	Sigla varchar(5),
+	Cor1 varchar(100) NOT NULL,
+	Cor2 varchar(100),
+	Cor3 varchar(100),
+	Usuario_id int not null
+)
+go 
 
-/****** Object:  Table [dbo].[Times]    Script Date: 14/09/2018 18:36:03 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Times](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Nome] [varchar](255) NOT NULL,
- CONSTRAINT [PK_Times] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
+ALTER TABLE Times
+ADD FOREIGN KEY (Usuario_Id) REFERENCES Usuarios(Id);
 
