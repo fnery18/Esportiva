@@ -15,18 +15,18 @@
                 "Cor3": $("#txtCor3").val(),
                 "Nacionalidade": $("#txtNacionalidade").val(),
                 "DataFundacao": $("#txtFundacao").val(),
-                "nomeAntigo" : $('#txtNomeAntigo').val()
+                "nomeAntigo": $('#txtNomeAntigo').val()
             }, function (retorno) {
                 if (retorno.Sucesso) {
                     $("#meus-times").load("/Administrativo/Time/ #meus-times");
                     $('.close').trigger('click');
                     MensagemSucesso(retorno.Mensagem);
                     $('#btn-novo-time').remove();
-                    if (window.location.href.includes('EditarTime') || $('#qtd-time').val() === '0') {
-                        setTimeout(function () {
-                            location.reload();
-                        }, 1000)
-                    }
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000)
+
                 } else {
                     MensagemErroPersonalizada(retorno.Mensagem);
                 }
@@ -69,10 +69,10 @@
         let fundacao = $('#txtFundacao');
         let sigla = $('#txtSigla');
 
-        if(nome.val() == ""){
+        if (nome.val() == "") {
             MensagemErroPersonalizada("Por favor digite o nome");
             nome.focus();
-        } else if(nacionalidade.val() == ""){
+        } else if (nacionalidade.val() == "") {
             MensagemErroPersonalizada("Por favor digite a nacionalidade");
             nacionalidade.focus();
         } else if (fundacao.val() == "") {

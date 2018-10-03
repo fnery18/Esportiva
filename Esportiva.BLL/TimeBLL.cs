@@ -2,6 +2,7 @@
 using Esportiva.DAL.Interfaces;
 using Esportiva.MOD;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Threading.Tasks;
 
 namespace Esportiva.BLL
@@ -10,7 +11,7 @@ namespace Esportiva.BLL
     public class TimeBLL : ITimeBLL
     {
         private ITimeDAL _timeDAL;
-        private const int quantidadeTimesPermitido = 1;
+        private int quantidadeTimesPermitido = int.Parse(ConfigurationManager.AppSettings["quantidadeTimeLimite"]);
         private IAutenticacaoBLL _autenticacaoBLL;
         public TimeBLL(ITimeDAL timeDAL, IAutenticacaoBLL autenticacaoBLL)
         {

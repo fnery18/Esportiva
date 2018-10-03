@@ -1,14 +1,12 @@
 ﻿@model List<Esportiva.Models.TimeModel>
 @{
     ViewBag.Title = "Meus Times";
-
-    var quantidadeTimes = Model.Count == 0 ? "" : "(" + Model.Count.ToString() + ")";
 }
 
 <input type="hidden" id="qtd-time" value="@Model.Count" />
 <div class="titulo-times">
-    <p>MEUS TIMES @quantidadeTimes
-    @if (Model.Count < 1)
+    <p>MEU TIME
+    @if (Model.Count < int.Parse(System.Configuration.ConfigurationManager.AppSettings["quantidadeTimeLimite"]))
     {
         <a data-toggle="tooltip" data-original-title="Novo" data-placement="right" id="btn-novo-time">
             <i class="fa fa-plus"></i>

@@ -39,7 +39,7 @@
                     @if (Session["user"] != null)
                     {
                         <li><a class="saudacao">Olá @Session["user"]</a></li>
-                        <li>@Html.ActionLink("Times", "Time", "Administrativo")</li>
+                        <li>@Html.ActionLink("Meu Time", "Time", "Administrativo")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Autenticacao")</li>
                     }
                     else

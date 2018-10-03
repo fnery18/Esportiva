@@ -41,7 +41,7 @@ namespace Esportiva.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    var timeExiste = await _timeBLL.RetornarTimeExiste(nomeAntigo);
+                    var timeExiste = await _timeBLL.RetornarTimeExiste(nomeAntigo ?? time.Nome);
                     var usuario = Session["user"].ToString();
                     var novoTime = new TimeMOD()
                     {
@@ -64,7 +64,7 @@ namespace Esportiva.Controllers
                     }
                     else
                     {
-                        await _timeBLL.AlterarTime(novoTime, nomeAntigo, usuario);
+                        await _timeBLL.AlterarTime(novoTime, nomeAntigo ?? novoTime.Nome, usuario);
                         return Json(new { Sucesso = true, Mensagem = "Time alterado com sucesso!" });
                     }
                 }
