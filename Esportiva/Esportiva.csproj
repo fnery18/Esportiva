@@ -157,10 +157,12 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AdministrativoController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
+    <Compile Include="Controllers\EscalacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JogadorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SessionCheck.cs" />
     <Compile Include="Models\TimeModel.cs" />
@@ -183,6 +185,7 @@
     <Content Include="Views\Administrativo\Time\_ModalExcluiTimePartial.cshtml" />
     <Content Include="Views\Administrativo\Time\Editar.cshtml" />
     <Content Include="Views\Administrativo\Time\_ModalEditarTimePartial.cshtml" />
+    <Content Include="Views\Escalacao\Jogador\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

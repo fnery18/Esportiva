@@ -14,10 +14,12 @@ namespace Esportiva.Controllers
         private ITimeBLL _timeBLL;
         private IAutenticacaoBLL _autenticaBLL;
 
+
         public AdministrativoController(ITimeBLL timeBLL, IAutenticacaoBLL autenticaBLL)
         {
             _timeBLL = timeBLL;
             _autenticaBLL = autenticaBLL;
+
         }
 
 
