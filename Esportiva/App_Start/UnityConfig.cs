@@ -14,17 +14,17 @@ namespace Esportiva
         {
             var container = new UnityContainer();
 
-            container.RegisterType<IJogadorBLL, JogadorBLL>();
+            
             container.RegisterType<IHomeBLL, HomeBLL>();
             container.RegisterType<IAutenticacaoBLL, AutenticacaoBLL>();
             container.RegisterType<ITimeBLL, TimeBLL>();
+            container.RegisterType<IEscalacaoBLL, EscalacaoBLL>();
 
-
-            container.RegisterType<IJogadorDAL, JogadorDAL>();
             container.RegisterType<IHomeDAL, HomeDAL>();
             container.RegisterType<IAutenticacaoDAL, AutenticacaoDAL>();
             container.RegisterType<ITimeDAL, TimeDAL>();
-            
+            container.RegisterType<IEscalacaoDAL, EscalacaoDAL>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -3,12 +3,14 @@
     ViewBag.Title = "Editar";
 }
 
+<input type="hidden" id="codigo-time" value="@Model.Id"
 <div class="titulo-times">
-    <p>Editar Time - 
+    <p>
+        Editar Time -
         <font style="color: @Model.Cor1">@Model.Nome </font>
-        <i data-opcao="editar-time" data-nome="@Model.Nome" 
-           data-id="@Model.Id" data-sigla="@Model.Sigla" data-cor1="@Model.Cor1" 
-           data-cor2="@Model.Cor2" data-cor3="@Model.Cor3" data-nacionalidade="@Model.Nacionalidade" 
+        <i data-opcao="editar-time" data-nome="@Model.Nome"
+           data-id="@Model.Id" data-sigla="@Model.Sigla" data-cor1="@Model.Cor1"
+           data-cor2="@Model.Cor2" data-cor3="@Model.Cor3" data-nacionalidade="@Model.Nacionalidade"
            data-fundacao="@Model.DataFundacao.ToShortDateString()" class="fa fa-edit">
         </i>
     </p>
@@ -21,14 +23,15 @@
 <div class="row">
     <div class="col-md-12">
         <div class="col-md-3 balao-opcoes">
-            <p>ESCALAÇÕES 
+            <p>
+                ESCALAÇÕES
                 <a data-toggle="tooltip" data-original-title="Gerencie as escalações do seu time" data-placement="bottom">
                     <i class="fa fa-info-circle"></i>
                 </a>
             </p>
         </div>
 
-        <div class="col-md-3 balao-opcoes">
+        <div class="col-md-3 balao-opcoes" id="btn-jogadores">
             <p>
                 JOGADORES
                 <a data-toggle="tooltip" data-original-title="Gerencie os jogadores do seu time" data-placement="bottom">

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Esportiva.BLL.Interfaces
 {
-    public interface IJogadorBLL
+    public interface IEscalacaoBLL
     {
         Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, string usuario);
     }

@@ -12,19 +12,17 @@ namespace Esportiva.Controllers
     [SessionCheck]
     public class EscalacaoController : Controller
     {
-        private IJogadorBLL _jogadorBLL;
-
-        public EscalacaoController(IJogadorBLL jogadorBLL)
+        private IEscalacaoBLL _escalacaoBLL;
+        public EscalacaoController(IEscalacaoBLL escalacaoBLL)
         {
-            _jogadorBLL = jogadorBLL;
+            _escalacaoBLL = escalacaoBLL;
         }
 
         [HttpGet]
         public async Task<ActionResult> Jogadores(int codigoTime)
         {
-            var jogadores = await _jogadorBLL.RetornarJogadores(codigoTime, Session["user"].ToString());
-
-            return View("Jogador/Index", jogadores.Select(batata => new JogadorModel(batata)).ToList());
+            var x = await _escalacaoBLL.RetornarJogadores(codigoTime, Session["user"].ToString());
+            return View("Jogador/Index");
             
         }
     }

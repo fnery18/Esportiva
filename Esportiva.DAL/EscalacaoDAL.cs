@@ -9,30 +9,24 @@ using System.Threading.Tasks;
 
 namespace Esportiva.DAL
 {
-    public class JogadorDAL : IJogadorDAL
+    public class EscalacaoDAL : IEscalacaoDAL
     {
-        private IJogadorDAL _jogadorDAL;
-        public JogadorDAL(IJogadorDAL jogador)
-        {
-            _jogadorDAL = jogador;
-        }
-
         public async Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, int codigoUsuario)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())
             {
                 #region QUERY
                 const string query = @"
-                               SELECT 
+                                SELECT
 	                                * 
-                                FROM 
+                                FROM
 	                                Jogadores
-                                INNER JOIN Times on Times.Id = Jogadores.Time_Id
+                                INNER JOIN Times ON Jogadores.Time_Id = Times.Id
                                 WHERE 
-	                                Times.Usuario_id = @codigoUsuario";
+                                    Jogadores.Time_id = @codigoTime AND Times.Usuario_id = @codigoUsuario";
                 #endregion
 
-                return await connection.QueryAsync<JogadorMOD>(query, new { codigoTime, codigoUsuario }) as List<JogadorMOD>;
+                return await connection.QueryAsync<JogadorMOD>(query, new { codigoUsuario, codigoTime }) as List<JogadorMOD>;
             }
         }
     }

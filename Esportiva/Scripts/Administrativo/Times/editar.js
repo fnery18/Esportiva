@@ -11,9 +11,10 @@
         $('#txtCor3').val($(this).data("cor3"));
 
         $('#modal-time').modal();
+    });
 
-
-
-
+    $(document).on('click', '#btn-jogadores', function () {
+        let codigo = $('#codigo-time').val();
+        window.location.href = `/Escalacao/Jogadores?codigoTime=${codigo}`
     });
 })
