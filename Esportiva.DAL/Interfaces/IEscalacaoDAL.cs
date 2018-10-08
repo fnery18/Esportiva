@@ -10,5 +10,6 @@ namespace Esportiva.DAL.Interfaces
     public interface IEscalacaoDAL
     {
         Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, int v);
+        Task<bool> CadastrarJogador(JogadorMOD jogadorMOD);
     }
 }

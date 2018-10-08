@@ -19,6 +19,11 @@ namespace Esportiva.BLL
             _autenticacaoDAL = autenticacaoDAL;
         }
 
+        public async Task<bool> CadastrarJogador(JogadorMOD jogadorMOD)
+        {
+            return await _escalacaoDAL.CadastrarJogador(jogadorMOD);
+        }
+
         public async Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, string usuario)
         {
             var codigoUsuario = (await _autenticacaoDAL.RetornarUsuario(usuario))?.Id;

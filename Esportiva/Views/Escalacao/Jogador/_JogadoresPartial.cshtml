@@ -1,0 +1,51 @@
+﻿@model List<Esportiva.Models.JogadorModel>
+
+@if (Model.Count == 0)
+{
+    <div class="col-md-12">
+        <div class="time-card">
+            <div class="time-card-titulo">
+                <p class="texto-card">
+                    Ops! Nenhum jogador encontrado
+                    <i style="color: var(--color-red);" class="fa fa-times-circle"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-md-12">
+        @foreach (var jogador in Model)
+        {
+            <div class="time-card">
+                <div class="time-card-titulo">
+                    <p class="texto-card">@jogador.NomeCompleto</p>
+                </div>
+
+                <div class="time-card-info">
+                    <p class="descricao-card">Posição: @jogador.Posicao</p>
+                    <p class="descricao-card">Data de nascimento: @jogador.DataNascimentoFormatada</p>
+                    <p class="descricao-card">Numero da Camisa: @jogador.NumeroCamisa</p>
+                    <p class="descricao-card">Apelido: @jogador.Apelido</p>
+                    <p class="descricao-card">Altura: @jogador.Altura</p>
+                </div>
+
+                <div class="time-card-opcoes">
+                    <p>
+                        Opções:
+                        <a target="_blank" href="/Escalacao/EditarJogar?codigoJogador=@jogador.Id" data-toggle="tooltip"
+                           data-original-title="Editar Jogador" data-placement="bottom">
+                            <i class="fa fa-edit editar"></i>
+                        </a>
+                        <a data-toggle="tooltip" data-original-title="Excluir Jogador" data-placement="bottom"
+                           data-opcao="excluir-jogador" data-id="@jogador.Id">
+                            <i class="fa fa-trash lixeira"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+
+}

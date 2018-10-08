@@ -4,13 +4,29 @@
     ViewBag.Title = "Meus Jogadores";
 }
 
-<h2>Meus Jogadores</h2>
+<div class="titulo-times">
+    <p>
+        MEUS JOGADORES
+        <a data-toggle="tooltip" data-original-title="Novo" data-placement="right" id="btn-novo-jogador">
+            <i class="fa fa-plus"></i>
+        </a>
+    </p>
+</div>
+
+<hr />
+
+<div id="partial-jogadores">
+    @Html.Partial("Jogador/_JogadoresPartial", Model)
+</div>
+
+@Html.Partial("Jogador/_ModalNovoJogadorPartial")
+@Html.Partial("Jogador/_ModalExcluirJogadorPartial")
 
 @section Styles{
-    
+    <link href="~/Content/css/times.css" rel="stylesheet" />
 }
 
 @section Scripts{
-    
+    <script src="~/Scripts/Escalacao/meusTimes.js"></script>
 }
 

@@ -8,15 +8,33 @@ namespace Esportiva.Models
 {
     public class JogadorModel
     {
+        public int CodigoTime { get; set; }
         public string Id { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+        public string NomeCompleto
+        {
+
+            get
+            {
+                return $"{Nome} {Sobrenome}";
+            }
+        }
         public string Posicao { get; set; }
         public DateTime DataNascimento { get; set; }
+        public string DataNascimentoFormatada
+        {
+
+            get
+            {
+                return DataNascimento.ToShortDateString();
+            }
+        }
         public string Time { get; set; }
         public int NumeroCamisa { get; set; }
         public string Apelido { get; set; }
         public double Altura { get; set; }
+
 
         public JogadorModel()
         {
