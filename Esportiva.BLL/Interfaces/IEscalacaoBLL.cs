@@ -10,6 +10,7 @@ namespace Esportiva.BLL.Interfaces
     public interface IEscalacaoBLL
     {
         Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, string usuario);
-        Task<bool> CadastrarJogador(JogadorMOD jogadorMOD);
+        Task<bool> CadastrarJogador(JogadorMOD jogadorMOD, string usuario);
+        Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario);
     }
 }

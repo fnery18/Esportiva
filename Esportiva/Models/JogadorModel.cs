@@ -1,6 +1,7 @@
 ﻿using Esportiva.MOD;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,7 +11,9 @@ namespace Esportiva.Models
     {
         public int CodigoTime { get; set; }
         public string Id { get; set; }
+        [Required]
         public string Nome { get; set; }
+        [Required]
         public string Sobrenome { get; set; }
         public string NomeCompleto
         {
@@ -20,7 +23,9 @@ namespace Esportiva.Models
                 return $"{Nome} {Sobrenome}";
             }
         }
+        [Required]
         public string Posicao { get; set; }
+        [Required]
         public DateTime DataNascimento { get; set; }
         public string DataNascimentoFormatada
         {
@@ -30,9 +35,13 @@ namespace Esportiva.Models
                 return DataNascimento.ToShortDateString();
             }
         }
+        
         public string Time { get; set; }
+        [Required]
         public int NumeroCamisa { get; set; }
+        [Required]
         public string Apelido { get; set; }
+        [Required]
         public double Altura { get; set; }
 
 

@@ -1,22 +1,50 @@
 ﻿$(function () {
     $('a').tooltip();
-
     $(document).on('click', '#btn-novo-jogador', function () {
+        $('#modal-jogador').modal();
+    });
+
+    $(document).on('click', 'a[data-opcao="editar-jogador"]', function () {
+        $('#btn-salvar-jogador').text('Editar');
+        $('#txtNome').val($(this).data('nome'));
+        $('#txtSobrenome').val($(this).data('sobrenome'));
+        $('#txtCamisa').val($(this).data('camisa'));
+        $('#txtPosicao').val($(this).data('posicao'));
+        $('#txtApelido').val($(this).data('apelido'));
+        $('#txtAltura').val($(this).data('altura'));
+        $('#txtCodigoJogador').val($(this).data('codigo-jogador'));
         $('#modal-jogador').modal();
     });
 
     $(document).on('click', '#btn-salvar-jogador', function () {
         if (validaForm()) {
-            $.post('/Escalacao/CadastraJogador/',
-                {
-
-                }, function () {
-                    
-                });
+            let url = "/Escalacao/CadastraJogador/"
+            if ($(this).text == "Editar") {
+                url = "/Escalacao/EditarJogador/"
+            }
+            
+            $.post(url, {
+                "Nome": $("#txtNome").val(),
+                "Sobrenome": $("#txtSobrenome").val(),
+                "Posicao": $("#txtPosicao").val(),
+                "DataNascimento": $("#txtNascimento").val(),
+                "NumeroCamisa": $("#txtCamisa").val(),
+                "Apelido": $("#txtApelido").val(),
+                "Altura": $("#txtAltura").val(),
+            }, function (retorno) {
+                if (retorno.Sucesso) {
+                    MensagemSucesso(retorno.Mensagem);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                } else {
+                    MensagemErroPersonalizada(retorno.Mensagem);
+                }
+            });
         }
     });
 
-    const validaForm = function(){
+    const validaForm = function () {
         let nome = $('#txtNome');
         let sobrenome = $('#txtSobrenome');
         let nascimento = $('#txtNascimento');

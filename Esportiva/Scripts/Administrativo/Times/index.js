@@ -23,9 +23,7 @@
                     MensagemSucesso(retorno.Mensagem);
                     $('#btn-novo-time').remove();
 
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1000)
+
 
                 } else {
                     MensagemErroPersonalizada(retorno.Mensagem);

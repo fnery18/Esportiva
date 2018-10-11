@@ -26,7 +26,44 @@ namespace Esportiva.Controllers
             return View("Jogador/Index", jogadores
                                             .Select(c => new JogadorModel(c))
                                             .ToList());
-            
+
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult> EditarJogador(JogadorModel jogador)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var cadastrou = await _escalacaoBLL.EditarJogador(new JogadorMOD()
+                    {
+                        Altura = jogador.Altura,
+                        Apelido = jogador.Apelido,
+                        CodigoTime = jogador.CodigoTime,
+                        DataNascimento = jogador.DataNascimento,
+                        Nome = jogador.Nome,
+                        NumeroCamisa = jogador.NumeroCamisa,
+                        Posicao = jogador.Posicao,
+                        Sobrenome = jogador.Sobrenome,
+                        Time = jogador.Time,
+                        Id = jogador.Id
+                    }, Session["user"].ToString());
+
+                    if (cadastrou)
+                        return Json(new { Sucesso = true, Mensagem = "Jogador editado com sucesso!" });
+                    return Json(new { Sucesso = false, Mensagem = "Ocorreu um erro ao editar jogador" });
+
+                }
+
+                return Json(new { Sucesso = false, Mensagem = "Ops! Campos não preenchidos corretamente" });
+            }
+            catch (Exception e)
+            {
+
+                return Json(new { Sucesso = false, Mensagem = e.Message });
+            }
         }
 
         [HttpPost]
@@ -47,7 +84,7 @@ namespace Esportiva.Controllers
                         Posicao = jogador.Posicao,
                         Sobrenome = jogador.Sobrenome,
                         Time = jogador.Time
-                    });
+                    }, Session["user"].ToString());
 
                     if (cadastrou)
                         return Json(new { Sucesso = true, Mensagem = "Jogador cadastrado com sucesso!" });
@@ -59,8 +96,7 @@ namespace Esportiva.Controllers
             }
             catch (Exception e)
             {
-
-                throw;
+                return Json(new { Sucesso = false, Mensagem = e.Message });
             }
         }
     }

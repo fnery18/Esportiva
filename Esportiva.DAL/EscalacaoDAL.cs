@@ -20,9 +20,47 @@ namespace Esportiva.DAL
                                 INSERT INTO 
                                     Jogadores 
                                 VALUES 
-                                    (@Nome, @Sobrenome, @Posicao, @DataNascimento, @Time_Id, @NumeroCamisa, @Apelido, @Altura)";
+                                    (@Nome, @Sobrenome, @Posicao, @DataNascimento, @CodigoTime, @NumeroCamisa, @Apelido, @Altura)";
                 #endregion
                 return await connection.ExecuteAsync(query, jogadorMOD) > 0;
+            }
+        }
+
+        public async Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region "QUERY"
+                const string query = @"
+                                UPDATE 
+                                    Jogadores 
+                                SET 
+                                    Nome = @Nome, Sobrenome = @Sobrenome, 
+                                    DataNascimento = @DataNascimento, NumeroCamisa = @NumeroCamisa, Aplido = @Apelido, Altura = @Altura
+                                WHERE
+                                    Id = @Id";
+                #endregion
+                // trocar pra dar inner join em usuario e so alterar where usuario = usuario
+                return await connection.ExecuteAsync(query, jogadorMOD) > 0;
+            }
+        }
+
+        public async Task<int> RetornarCodigoTime(string usuario)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region "QUERY"
+                const string query = @"
+                                SELECT 
+	                                Times.Id 
+                                FROM 
+	                                Times 
+                                INNER JOIN Usuarios ON Times.Usuario_id = Usuarios.Id
+                                WHERE 
+                                    Usuarios.Usuario = @usuario";
+                #endregion
+
+                return await connection.QueryFirstOrDefaultAsync<int>(query, new { usuario });
             }
         }
 

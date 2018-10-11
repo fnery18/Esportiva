@@ -34,7 +34,11 @@ else
                 <div class="time-card-opcoes">
                     <p>
                         Opções:
-                        <a target="_blank" href="/Escalacao/EditarJogar?codigoJogador=@jogador.Id" data-toggle="tooltip"
+                        <a data-opcao="editar-jogador" data-nome="@jogador.Nome" data-posicao="@jogador.Posicao"
+                           data-sobrenome="@jogador.Sobrenome"
+                           data-nascimento="@jogador.DataNascimento" data-camisa="@jogador.NumeroCamisa"
+                           data-apelido="@jogador.Apelido" data-altura="@jogador.Altura" 
+                           data-codigo="@jogador.Id" data-toggle="tooltip"
                            data-original-title="Editar Jogador" data-placement="bottom">
                             <i class="fa fa-edit editar"></i>
                         </a>

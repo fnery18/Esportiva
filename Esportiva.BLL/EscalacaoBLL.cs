@@ -19,9 +19,15 @@ namespace Esportiva.BLL
             _autenticacaoDAL = autenticacaoDAL;
         }
 
-        public async Task<bool> CadastrarJogador(JogadorMOD jogadorMOD)
+        public async Task<bool> CadastrarJogador(JogadorMOD jogadorMOD, string usuario)
         {
+            jogadorMOD.CodigoTime = await _escalacaoDAL.RetornarCodigoTime(usuario);
             return await _escalacaoDAL.CadastrarJogador(jogadorMOD);
+        }
+
+        public async Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario)
+        {
+            return await _escalacaoDAL.EditarJogador(jogadorMOD, usuario);
         }
 
         public async Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, string usuario)
@@ -34,5 +40,8 @@ namespace Esportiva.BLL
                 return new List<JogadorMOD>();
             return jogadores;
         }
+
+
+        
     }
 }
