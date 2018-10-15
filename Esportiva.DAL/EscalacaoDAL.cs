@@ -70,8 +70,17 @@ namespace Esportiva.DAL
             {
                 #region QUERY
                 const string query = @"
-                                SELECT
-	                                * 
+                               	SELECT
+								    Jogadores.Id,
+									Jogadores.Nome,
+									Jogadores.Sobrenome,
+									Jogadores.Posicao,
+									Jogadores.DataNascimento,
+									Times.Id as CodigoTime,
+									Times.Nome as Time,
+									Jogadores.NumeroCamisa,
+									Jogadores.Apelido,
+									Jogadores.Altura
                                 FROM
 	                                Jogadores
                                 INNER JOIN Times ON Jogadores.Time_Id = Times.Id
