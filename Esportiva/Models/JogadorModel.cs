@@ -52,6 +52,7 @@ namespace Esportiva.Models
 
         public JogadorModel(JogadorMOD jogador)
         {
+            CodigoTime = jogador.CodigoTime;
             Id = jogador.Id;
             Nome = jogador.Nome;
             Sobrenome = jogador.Sobrenome;

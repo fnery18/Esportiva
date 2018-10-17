@@ -30,18 +30,26 @@ namespace Esportiva.DAL
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())
             {
-                #region "QUERY"
-                const string query = @"
+                try
+                {
+                    #region "QUERY"
+                    const string query = @"
                                 UPDATE 
                                     Jogadores 
                                 SET 
                                     Nome = @Nome, Sobrenome = @Sobrenome, 
-                                    DataNascimento = @DataNascimento, NumeroCamisa = @NumeroCamisa, Aplido = @Apelido, Altura = @Altura
+                                    DataNascimento = @DataNascimento, NumeroCamisa = @NumeroCamisa, Apelido = @Apelido, Altura = @Altura
                                 WHERE
                                     Id = @Id";
-                #endregion
-                // trocar pra dar inner join em usuario e so alterar where usuario = usuario
-                return await connection.ExecuteAsync(query, jogadorMOD) > 0;
+                    #endregion
+                    // trocar pra dar inner join em usuario e so alterar where usuario = usuario
+                    return await connection.ExecuteAsync(query, jogadorMOD) > 0;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+              
             }
         }
 

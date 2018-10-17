@@ -12,6 +12,8 @@
         $('#txtPosicao').val($(this).data('posicao'));
         $('#txtApelido').val($(this).data('apelido'));
         $('#txtAltura').val($(this).data('altura'));
+
+        $('#txtCodigoDoJogador').val($(this).data('codigo'));
         $('#txtCodigoJogador').val($(this).data('codigo-jogador'));
         $('#modal-jogador').modal();
     });
@@ -19,18 +21,20 @@
     $(document).on('click', '#btn-salvar-jogador', function () {
         if (validaForm()) {
             let url = "/Escalacao/CadastraJogador/"
-            if ($(this).text == "Editar") {
+            if ($(this).text() == "Editar") {
                 url = "/Escalacao/EditarJogador/"
             }
             
             $.post(url, {
+                "CodigoTime": $('#txtCodigoJogador').val(),
+                "Id": $('#txtCodigoDoJogador').val(),
                 "Nome": $("#txtNome").val(),
                 "Sobrenome": $("#txtSobrenome").val(),
                 "Posicao": $("#txtPosicao").val(),
                 "DataNascimento": $("#txtNascimento").val(),
                 "NumeroCamisa": $("#txtCamisa").val(),
                 "Apelido": $("#txtApelido").val(),
-                "Altura": $("#txtAltura").val(),
+                "Altura": $("#txtAltura").val()
             }, function (retorno) {
                 if (retorno.Sucesso) {
                     MensagemSucesso(retorno.Mensagem);

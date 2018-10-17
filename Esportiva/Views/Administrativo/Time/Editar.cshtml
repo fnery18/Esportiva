@@ -3,7 +3,8 @@
     ViewBag.Title = "Editar";
 }
 
-<input type="hidden" id="codigo-time" value="@Model.Id"
+<input type="hidden" id="codigo-time" value="@Model.Id" />
+
 <div class="titulo-times">
     <p>
         Editar Time -
@@ -18,35 +19,35 @@
 
 <hr />
 
-<p><b>OPÇÕES</b></p>
-
-<div class="row">
+<div class="row justify-content-md-center">
     <div class="col-md-12">
-        <div class="col-md-3 balao-opcoes">
-            <p>
-                ESCALAÇÕES
-                <a data-toggle="tooltip" data-original-title="Gerencie as escalações do seu time" data-placement="bottom">
-                    <i class="fa fa-info-circle"></i>
-                </a>
-            </p>
-        </div>
+        <div class="col-md-12">
+            <div class="col-md-3 balao-opcoes">
+                <p>
+                    ACONTECIMENTOS
+                    <a data-toggle="tooltip" data-original-title="Adicione acontecimentos ás partidas" data-placement="bottom">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
+                </p>
+            </div>
 
-        <div class="col-md-3 balao-opcoes" id="btn-jogadores">
-            <p>
-                JOGADORES
-                <a data-toggle="tooltip" data-original-title="Gerencie os jogadores do seu time" data-placement="bottom">
-                    <i class="fa fa-info-circle"></i>
-                </a>
-            </p>
-        </div>
+            <div class="col-md-3 balao-opcoes" id="btn-jogadores">
+                <p>
+                    JOGADORES
+                    <a data-toggle="tooltip" data-original-title="Gerencie os jogadores do seu time" data-placement="bottom">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
+                </p>
+            </div>
 
-        <div class="col-md-3 balao-opcoes">
-            <p>
-                PARTIDAS
-                <a data-toggle="tooltip" data-original-title="Visualize as partidas do seu time" data-placement="bottom">
-                    <i class="fa fa-info-circle"></i>
-                </a>
-            </p>
+            <div class="col-md-3 balao-opcoes">
+                <p>
+                    PARTIDAS
+                    <a data-toggle="tooltip" data-original-title="Visualize e cadastre as partidas do seu time" data-placement="bottom">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
 </div>
