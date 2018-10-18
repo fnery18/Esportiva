@@ -9,7 +9,7 @@ namespace Esportiva.Models
 {
     public class JogadorModel
     {
-        public int CodigoTime { get; set; }
+        public int? CodigoTime { get; set; }
         public string Id { get; set; }
         [Required]
         public string Nome { get; set; }

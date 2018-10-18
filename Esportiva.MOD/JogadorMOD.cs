@@ -13,7 +13,7 @@ namespace Esportiva.MOD
         public string Sobrenome { get; set; }
         public string Posicao { get; set; }
         public DateTime DataNascimento { get; set; }
-        public int CodigoTime { get; set; }
+        public int? CodigoTime { get; set; }
         public string Time { get; set; }
         public int NumeroCamisa { get; set; }
         public string Apelido { get; set; }
