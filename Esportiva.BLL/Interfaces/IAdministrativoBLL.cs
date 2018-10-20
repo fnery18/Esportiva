@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Esportiva.BLL.Interfaces
 {
-    public interface ITimeBLL
+    public interface IAdministrativoBLL
     {
         Task<List<TimeMOD>> RetornarTimes(LoginMOD usuario);
         Task<bool> CadastrarTime(TimeMOD timeMOD, string usuario);
@@ -12,5 +12,6 @@ namespace Esportiva.BLL.Interfaces
         Task<TimeMOD> RetornarTime(int codigoTime, string usuario);
         Task<bool> RetornarTimeExiste(string nome);
         Task AlterarTime(TimeMOD novoTime, string nome, string usuario);
+        Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user);
     }
 }

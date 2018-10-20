@@ -11,13 +11,13 @@ namespace Esportiva.Controllers
     [SessionCheck]
     public class AdministrativoController : Controller
     {
-        private ITimeBLL _timeBLL;
+        private IAdministrativoBLL _administrativoBLL;
         private IAutenticacaoBLL _autenticaBLL;
 
 
-        public AdministrativoController(ITimeBLL timeBLL, IAutenticacaoBLL autenticaBLL)
+        public AdministrativoController(IAdministrativoBLL administrativoBLL, IAutenticacaoBLL autenticaBLL)
         {
-            _timeBLL = timeBLL;
+            _administrativoBLL = administrativoBLL;
             _autenticaBLL = autenticaBLL;
 
         }
@@ -28,7 +28,7 @@ namespace Esportiva.Controllers
         public async Task<ActionResult> Time()
         {
             var usuario = await _autenticaBLL.RetornarUsuario(Session["user"].ToString());
-            var times = await _timeBLL.RetornarTimes(usuario);
+            var times = await _administrativoBLL.RetornarTimes(usuario);
 
             return View("Time/Index", times
                                         .Select(c => new TimeModel(c))
@@ -43,7 +43,7 @@ namespace Esportiva.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    var timeExiste = await _timeBLL.RetornarTimeExiste(nomeAntigo ?? time.Nome);
+                    var timeExiste = await _administrativoBLL.RetornarTimeExiste(nomeAntigo ?? time.Nome);
                     var usuario = Session["user"].ToString();
                     var novoTime = new TimeMOD()
                     {
@@ -58,7 +58,7 @@ namespace Esportiva.Controllers
 
                     if (!timeExiste)
                     {
-                        bool cadastrou = await _timeBLL.CadastrarTime(novoTime, usuario);
+                        bool cadastrou = await _administrativoBLL.CadastrarTime(novoTime, usuario);
                         if (cadastrou)
                             return Json(new { Sucesso = true, Mensagem = "Time cadastrado com sucesso!" });
                         else
@@ -66,7 +66,7 @@ namespace Esportiva.Controllers
                     }
                     else
                     {
-                        await _timeBLL.AlterarTime(novoTime, nomeAntigo ?? novoTime.Nome, usuario);
+                        await _administrativoBLL.AlterarTime(novoTime, nomeAntigo ?? novoTime.Nome, usuario);
                         return Json(new { Sucesso = true, Mensagem = "Time alterado com sucesso!" });
                     }
                 }
@@ -83,14 +83,26 @@ namespace Esportiva.Controllers
         [HttpPost]
         public async Task<JsonResult> ExcluirTime(int codigoTime)
         {
-            return Json(new { Sucesso = await _timeBLL.ExcluirTime(codigoTime, Session["user"].ToString()) });
+            return Json(new { Sucesso = await _administrativoBLL.ExcluirTime(codigoTime, Session["user"].ToString()) });
         }
 
         [HttpGet]
         public async Task<ActionResult> EditarTime(int codigoTime)
         {
-            var time = await _timeBLL.RetornarTime(codigoTime, Session["user"].ToString());
+            var time = await _administrativoBLL.RetornarTime(codigoTime, Session["user"].ToString());
             return View("Time/Editar", new TimeModel(time));
+        }
+
+        #endregion
+
+        #region ACONTECIMENTOS
+
+        [HttpGet]
+        public async Task<ActionResult> Acontecimentos(int codigoTime)
+        {
+            var user = Session["user"].ToString();
+            var acontecimentos = await _administrativoBLL.RetornarAcontecimentos(codigoTime, user);
+            return View();
         }
 
         #endregion

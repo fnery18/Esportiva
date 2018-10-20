@@ -115,6 +115,21 @@ CREATE TABLE Acontecimentos(
 	FOREIGN KEY (TipoAcontecimento_Id) REFERENCES TipoAcontecimento(Id),
 )
 
+INSERT INTO TipoAcontecimento VALUES ('Cartão Vermelho', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Cartão Amarelo', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Escalação', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Falta Cometida', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Falta Tomada', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Gol Tomado', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Tomada de Bola', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Drible', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Defesa', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Cruzamento', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Passe Errado', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Passe Certo', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Chute para Fora', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Chute para o Gol', 'cartao_vermelho.png')
+INSERT INTO TipoAcontecimento VALUES ('Gol', 'cartao_vermelho.png')
 
 
 /*Function*/

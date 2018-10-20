@@ -17,12 +17,12 @@ namespace Esportiva
             
             container.RegisterType<IHomeBLL, HomeBLL>();
             container.RegisterType<IAutenticacaoBLL, AutenticacaoBLL>();
-            container.RegisterType<ITimeBLL, TimeBLL>();
+            container.RegisterType<IAdministrativoBLL, Administrativo>();
             container.RegisterType<IEscalacaoBLL, EscalacaoBLL>();
 
             container.RegisterType<IHomeDAL, HomeDAL>();
             container.RegisterType<IAutenticacaoDAL, AutenticacaoDAL>();
-            container.RegisterType<ITimeDAL, TimeDAL>();
+            container.RegisterType<IAdministrativoDAL, AdministrativoDAL>();
             container.RegisterType<IEscalacaoDAL, EscalacaoDAL>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

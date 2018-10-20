@@ -8,28 +8,30 @@ using System.Threading.Tasks;
 namespace Esportiva.BLL
 {
 
-    public class TimeBLL : ITimeBLL
+    public class Administrativo : IAdministrativoBLL
     {
-        private ITimeDAL _timeDAL;
+        private IAdministrativoDAL _administrativoDAL;
         private int quantidadeTimesPermitido = int.Parse(ConfigurationManager.AppSettings["quantidadeTimeLimite"]);
         private IAutenticacaoBLL _autenticacaoBLL;
-        public TimeBLL(ITimeDAL timeDAL, IAutenticacaoBLL autenticacaoBLL)
+        public Administrativo(IAdministrativoDAL administrativoDAL, IAutenticacaoBLL autenticacaoBLL)
         {
-            _timeDAL = timeDAL;
+            _administrativoDAL = administrativoDAL;
             _autenticacaoBLL = autenticacaoBLL;
         }
+
+        #region TIME
 
         public async Task<bool> CadastrarTime(TimeMOD time, string usuario)
         {
             var codigoUsuario = (await _autenticacaoBLL.RetornarUsuario(usuario))?.Id;
 
-            var quantidadeTime = await _timeDAL.RetornarTimes(codigoUsuario ?? 0);
+            var quantidadeTime = await _administrativoDAL.RetornarTimes(codigoUsuario ?? 0);
 
             if (quantidadeTime != null)
             {
                 if (quantidadeTime.Count < quantidadeTimesPermitido)
                 {
-                    await _timeDAL.CadastrarTime(time, codigoUsuario ?? 0);
+                    await _administrativoDAL.CadastrarTime(time, codigoUsuario ?? 0);
                     return true;
                 }
             }
@@ -40,7 +42,7 @@ namespace Esportiva.BLL
         {
             if (usuario != null)
             {
-                var times = await _timeDAL.RetornarTimes(usuario.Id);
+                var times = await _administrativoDAL.RetornarTimes(usuario.Id);
 
                 if (times != null)
                     return times;
@@ -53,13 +55,13 @@ namespace Esportiva.BLL
         public async Task<bool> ExcluirTime(int codigoTime, string usuario)
         {
             var codigoUsuario = (await _autenticacaoBLL.RetornarUsuario(usuario))?.Id;
-            return await _timeDAL.ExcluirTime(codigoTime, codigoUsuario ?? 0);
+            return await _administrativoDAL.ExcluirTime(codigoTime, codigoUsuario ?? 0);
         }
 
         public async Task<TimeMOD> RetornarTime(int codigoTime, string usuario)
         {
             var codigoUsuario = (await _autenticacaoBLL.RetornarUsuario(usuario))?.Id;
-            var retorno = await _timeDAL.RetornarTime(codigoTime, codigoUsuario ?? 0);
+            var retorno = await _administrativoDAL.RetornarTime(codigoTime, codigoUsuario ?? 0);
 
             var time = new TimeMOD();
 
@@ -71,13 +73,20 @@ namespace Esportiva.BLL
 
         public async Task<bool> RetornarTimeExiste(string nome)
         {
-            return await _timeDAL.RetornarTime(nome) != null;
+            return await _administrativoDAL.RetornarTime(nome) != null;
         }
 
         public async Task AlterarTime(TimeMOD novoTime, string nomeTime, string usuario)
         {
             var codigoUsuario = (await _autenticacaoBLL.RetornarUsuario(usuario))?.Id;
-            await _timeDAL.AlterarTime(novoTime, nomeTime, codigoUsuario ?? 0);
+            await _administrativoDAL.AlterarTime(novoTime, nomeTime, codigoUsuario ?? 0);
+        }
+        #endregion
+
+
+        public async Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user)
+        {
+            return await _administrativoDAL.RetornarAcontecimentos(codigoTime, user);
         }
     }
 }

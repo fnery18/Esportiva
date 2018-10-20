@@ -8,7 +8,9 @@ namespace Esportiva.MOD
         public string NomePartida { get; set; }
         public DateTime DataPartida { get; set; }
         public int Time1_Id { get; set; }
+        public string Time1 { get; set; }
         public int Time2_Id { get; set; }
+        public string Time2 { get; set; }
         public string LocalCompeticao { get; set; }
         public string Competicao { get; set; }
     }

@@ -48,9 +48,9 @@
     <Compile Include="Interfaces\IAutenticacaoBLL.cs" />
     <Compile Include="Interfaces\IHomeBLL.cs" />
     <Compile Include="Interfaces\IEscalacaoBLL.cs" />
-    <Compile Include="Interfaces\ITimeBLL.cs" />
+    <Compile Include="Interfaces\IAdministrativoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeBLL.cs" />
+    <Compile Include="AdministrativoBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Esportiva.DAL\Esportiva.DAL.csproj">
