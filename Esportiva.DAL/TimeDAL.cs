@@ -50,7 +50,7 @@ namespace Esportiva.DAL
                                 INSERT INTO 
                                     Times 
                                 VALUES 
-                                    (@Nome, @Sigla, @Cor1, @Cor2, @Cor3, @Nacionalidade, @DataFundacao, @codigoUsuario)";
+                                    (@Nome, @Cor1, @Cor2, @Cor3, @Sigla, @Nacionalidade, @DataFundacao, @codigoUsuario)";
                 #endregion
 
                 await connection.ExecuteAsync(query,

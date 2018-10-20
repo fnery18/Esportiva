@@ -82,80 +82,39 @@ GO
 
 /*-----------------------------------*/
 
-/*inicio criacao tabela de partidas*/
+CREATE TABLE Partidas(
+	Id INT PRIMARY KEY IDENTITY,
+	NomePartida varchar(255) NOT NULL,
+	DataPartida date NOT NULL, 
+	Time1_Id INT NOT NULL,
+	Time2_Id INT NOT NULL,
+	LocalCompeticao VARCHAR(255) NOT NULL,
+	Competicao VARCHAR(255) NOT NULL
+	FOREIGN KEY (Time1_Id) REFERENCES Times(Id),
+	FOREIGN KEY (Time2_Id) REFERENCES Times(Id)
+)
 
-CREATE TABLE [dbo].[Partidas](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Data] [date] NOT NULL,
-	[Time1_id] [int] NOT NULL,
-	[Time2_id] [int] NOT NULL,
-	[Local] [varchar](255) NOT NULL,
-	[Competicao] [varchar](255) NOT NULL,
- CONSTRAINT [PK_Partidas] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+GO 
 
-ALTER TABLE [dbo].[Partidas]  WITH CHECK ADD  CONSTRAINT [FK_Partidas_Times] FOREIGN KEY([Time1_id])
-REFERENCES [dbo].[Times] ([Id])
-GO
+CREATE TABLE TipoAcontecimento(
+	Id INT PRIMARY KEY IDENTITY,
+	Nome VARCHAR(255) NOT NULL
+)
 
-ALTER TABLE [dbo].[Partidas] CHECK CONSTRAINT [FK_Partidas_Times]
-GO
 
-ALTER TABLE [dbo].[Partidas]  WITH CHECK ADD  CONSTRAINT [FK_Partidas_Times1] FOREIGN KEY([Time2_id])
-REFERENCES [dbo].[Times] ([Id])
-GO
+CREATE TABLE Acontecimentos(
+	Id INT PRIMARY KEY IDENTITY,
+	Jogador_Id INT NOT NULL,
+	Partida_Id INT NOT NULL,
+	Tempo INT NOT NULL,
+	Time_Id INT NOT NULL,
+	TipoAcontecimento_Id INT NOT NULL
+	FOREIGN KEY (Jogador_Id) REFERENCES Jogadores(Id),
+	FOREIGN KEY (Partida_Id) REFERENCES Partidas(Id),
+	FOREIGN KEY (Time_Id) REFERENCES Times(Id),
+	FOREIGN KEY (TipoAcontecimento_Id) REFERENCES TipoAcontecimento(Id),
+)
 
-ALTER TABLE [dbo].[Partidas] CHECK CONSTRAINT [FK_Partidas_Times1]
-GO
-
-/*final criacao tabela de partidas*/
-
-/*-----------------------------------*/
-
-/*inicio criacao tabela de acontecimentos*/
-
-CREATE TABLE [dbo].[Acontecimentos](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Partida_id] [int] NOT NULL,
-	[EntidadeRealizadora] [int] NOT NULL,
-	[EntidadeRealizadora_id] [int] NOT NULL,
-	[Acontecimento] [int] NOT NULL,
-	[PercentualPosseDeBola] [int] NULL,
-	[Tempo] [int] NOT NULL,
-	[EntidadeRealizadora_Nome] [varchar](255) NULL,
- CONSTRAINT [PK_Acontecimentos] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[Acontecimentos]  WITH CHECK ADD  CONSTRAINT [FK_Acontecimentos_Jogadores] FOREIGN KEY([EntidadeRealizadora_id])
-REFERENCES [dbo].[Jogadores] ([Id])
-GO
-
-ALTER TABLE [dbo].[Acontecimentos] CHECK CONSTRAINT [FK_Acontecimentos_Jogadores]
-GO
-
-ALTER TABLE [dbo].[Acontecimentos]  WITH CHECK ADD  CONSTRAINT [FK_Acontecimentos_Partidas] FOREIGN KEY([Partida_id])
-REFERENCES [dbo].[Partidas] ([Id])
-GO
-
-ALTER TABLE [dbo].[Acontecimentos] CHECK CONSTRAINT [FK_Acontecimentos_Partidas]
-GO
-
-ALTER TABLE [dbo].[Acontecimentos]  WITH CHECK ADD  CONSTRAINT [FK_Acontecimentos_Times] FOREIGN KEY([EntidadeRealizadora_id])
-REFERENCES [dbo].[Times] ([Id])
-GO
-
-ALTER TABLE [dbo].[Acontecimentos] CHECK CONSTRAINT [FK_Acontecimentos_Times]
-GO
-
-/*final criacao tabela de acontecimentos*/
 
 
 /*Function*/
