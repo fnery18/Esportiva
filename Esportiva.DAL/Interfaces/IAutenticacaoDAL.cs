@@ -9,5 +9,6 @@ namespace Esportiva.DAL.Interfaces
         Task CadastrarUsuario(LoginMOD login);
         Task<LoginMOD> RetornarUsuario(string usuario);
         Task<bool> ValidaExclusaoPartida(int? codigoUsuario, int codigoPartida);
+        Task<bool> ValidaDonoTime(int codigoUsuario, int time_Id);
     }
 }

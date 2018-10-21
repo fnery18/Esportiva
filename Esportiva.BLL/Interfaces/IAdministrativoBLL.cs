@@ -17,5 +17,8 @@ namespace Esportiva.BLL.Interfaces
         Task<bool> ExcluirPartida(int codigoPartida, string user);
         Task<bool> CadastrarPartida(PartidasMOD partida);
         Task<List<TimeMOD>> RetornarTimesAdversarios(LoginMOD usuario, int codigoTime);
+        Task<List<JogadorMOD>> RetornarJogadores(LoginMOD usuario, int codigoTime);
+        Task<List<TipoAcontecimentoMOD>> RetornarTipoAcontecimento();
+        Task<bool> CadastrarAcontecimento(AcontecimentosMOD acontecimentos, string user);
     }
 }

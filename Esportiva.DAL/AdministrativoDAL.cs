@@ -208,6 +208,8 @@ namespace Esportiva.DAL
                     {
                         partida.Time1 = time;
                         partida.Time2 = timeadversario;
+                        partida.IdTime1 = time.IdTime1;
+                        partida.IdTime2 = timeadversario.IdTime2;
                         return partida;
                     }, new
                     {
@@ -271,6 +273,61 @@ namespace Esportiva.DAL
             }
 
 
+        }
+
+        public async Task<List<JogadorMOD>> RetornarJogadores(int codigoUsuario, int codigoTime)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                SELECT 
+	                                Jogadores.Id,  Jogadores.Nome, Jogadores.Sobrenome, Jogadores.Posicao, Jogadores.DataNascimento,
+									Jogadores.NumeroCamisa, Jogadores.Apelido, Jogadores.Altura 
+                                FROM
+	                                Jogadores
+                                INNER JOIN Times ON Jogadores.Time_Id = Times.Id
+                                INNER JOIN Usuarios ON Times.Usuario_id = Usuarios.Id
+                                WHERE 
+	                                Times.Id = @codigoTime AND Usuarios.Id = @codigoUsuario";
+                #endregion
+
+                return await connection.QueryAsync<JogadorMOD>(query, new { codigoTime, codigoUsuario }) as List<JogadorMOD>;
+            }
+
+        }
+
+        public async Task<List<TipoAcontecimentoMOD>> RetornarTipoAcontecimento()
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                SELECT
+	                                *
+                                FROM
+	                                TipoAcontecimento";
+                #endregion
+
+                return await connection.QueryAsync<TipoAcontecimentoMOD>(query) as List<TipoAcontecimentoMOD>;
+            }
+
+        }
+
+        public async Task CadastrarAcontecimento(AcontecimentosMOD acontecimento)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                INSERT INTO 
+	                                Acontecimentos 
+                                VALUES 
+	                                (@Jogador_Id, @Partida_Id, @Tempo, @Time_Id, @TipoAcontecimento_Id)";
+                #endregion
+
+                await connection.ExecuteAsync(query, acontecimento);
+            }
         }
     }
 }

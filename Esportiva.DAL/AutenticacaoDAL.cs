@@ -42,6 +42,24 @@ namespace Esportiva.DAL
             }
         }
 
+        public async Task<bool> ValidaDonoTime(int codigoUsuario, int time_Id)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                SELECT 
+                                    * 
+                                FROM 
+                                    Times 
+                                WHERE 
+                                    Id = @time_Id AND Usuario_Id = @codigoUsuario";
+                #endregion
+
+                return await connection.QueryFirstOrDefaultAsync<TimeMOD>(query, new { codigoUsuario, time_Id }) != null;
+            }
+        }
+
         public async Task<bool> ValidaExclusaoPartida(int? codigoUsuario, int codigoPartida)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())

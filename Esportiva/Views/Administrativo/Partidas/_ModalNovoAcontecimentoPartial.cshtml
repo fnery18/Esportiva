@@ -1,0 +1,69 @@
+﻿@model Esportiva.Models.PartidaViewModel
+
+<div class="modal fade" id="modal-acontecimento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="titulo-padrao">
+                    Nova Acontecimento na partida - <font id="info-partida">@*aqui vai ser populado com o nome da partida*@</font>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="codigo-partida" value=""/>
+                <input type="hidden" id="codigo-time-acontecimento" value="" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-user"></i>
+                                <label>Jogador: </label>
+                                <select id="select-jogadores" class="form-control">
+                                    <option value="">Selecione um jogador</option>
+                                    @foreach (var jogador in Model.Jogadores)
+                                    {
+                                        <option value="@jogador.Id">@jogador.NomeCompleto</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-clock"></i>
+                                <label>Tempo em minutos: </label>
+                                <input type="number" min="1" max="100" id="txtTempo" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fa fa-calendar"></i>
+                                <label>Tipo de acontecimento: </label>
+                                <select class="form-control" id="select-tipo-acontecimento">
+                                    <option value="">Selecione um tipo</option>
+                                    @foreach (var acontecimento in Model.TipoAcontecimento)
+                                    {
+                                        <option value="@acontecimento.Id">@acontecimento.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-padrao" id="btn-salvar-acontecimento">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

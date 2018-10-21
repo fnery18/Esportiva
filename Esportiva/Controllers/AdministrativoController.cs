@@ -117,6 +117,8 @@ namespace Esportiva.Controllers
                 Partidas = partidas.Select(c => new PartidaModel(c)).ToList(),
                 MeusTimes = (await _administrativoBLL.RetornarTimes(usuario)).Select(c => new TimeModel(c)).ToList(),
                 TimesAdversarios = (await _administrativoBLL.RetornarTimesAdversarios(usuario, codigoTime)).Select(c => new TimeModel(c)).ToList(),
+                Jogadores = (await _administrativoBLL.RetornarJogadores(usuario, codigoTime)).Select(c => new JogadorModel(c)).ToList(),
+                TipoAcontecimento = (await _administrativoBLL.RetornarTipoAcontecimento()).Select(c => new TipoAcontecimentoModel(c)).ToList(),
                 codigoTime = codigoTime
             };
 
@@ -169,6 +171,41 @@ namespace Esportiva.Controllers
 
                 return Json(new { Sucesso = false, Mensagem = e.Message });
             }
+
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> CadastrarAcontecimento(AcontecimentoModel acontecimento)
+        {
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var cadastrou = await _administrativoBLL.CadastrarAcontecimento(new AcontecimentosMOD()
+                    {
+                        Jogador_Id = acontecimento.Jogador_Id,
+                        Tempo = acontecimento.Tempo,
+                        Time_Id = acontecimento.Time_Id,
+                        Partida_Id = acontecimento.Partida_Id,
+                        TipoAcontecimento_Id = acontecimento.TipoAcontecimento_Id
+                    }, Session["user"].ToString());
+
+                    if (cadastrou)
+                        return Json(new { Sucesso = true, Mensagem = "Acontecimento cadastrado com sucesso!" });
+                    return Json(new { Sucesso = false, Mensagem = "Ops! Ocorreu um erro." });
+
+                }
+
+                return Json(new { Sucesso = false, Mensagem = "Por favor preencha os campos corretamente." });
+            }
+            catch (Exception e)
+            {
+
+                return Json(new { Sucesso = false, Mensagem = e.Message });
+            }
+
 
         }
         #endregion

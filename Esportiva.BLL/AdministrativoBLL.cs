@@ -121,5 +121,36 @@ namespace Esportiva.BLL
                 return await _administrativoDAL.RetornarTimesAdversarios(usuario.Id, codigoTime);
             return new List<TimeMOD>();
         }
+
+        public async Task<List<JogadorMOD>> RetornarJogadores(LoginMOD usuario, int codigoTime)
+        {
+            if (usuario != null)
+                return await _administrativoDAL.RetornarJogadores(usuario.Id, codigoTime);
+
+            return new List<JogadorMOD>();
+        }
+
+        public async Task<List<TipoAcontecimentoMOD>> RetornarTipoAcontecimento()
+        {
+            return await _administrativoDAL.RetornarTipoAcontecimento();
+        }
+
+        public async Task<bool> CadastrarAcontecimento(AcontecimentosMOD acontecimento, string user)
+        {
+            var usuario = await _autenticacaoBLL.RetornarUsuario(user);
+
+
+            if (usuario != null)
+            {
+                var autorizado = await _autenticacaoBLL.ValidaDonoTime(usuario.Id, acontecimento.Time_Id);
+                if (autorizado)
+                {
+                    await _administrativoDAL.CadastrarAcontecimento(acontecimento);
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

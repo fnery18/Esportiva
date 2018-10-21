@@ -17,5 +17,8 @@ namespace Esportiva.DAL.Interfaces
         Task<bool> ExcluirPartida(int codigoPartida);
         Task<List<TimeMOD>> RetornarTimesAdversarios(int id, int codigoTime);
         Task<bool> CadastrarPartida(PartidasMOD partida);
+        Task<List<JogadorMOD>> RetornarJogadores(int id, int codigoTime);
+        Task<List<TipoAcontecimentoMOD>> RetornarTipoAcontecimento();
+        Task CadastrarAcontecimento(AcontecimentosMOD acontecimento);
     }
 }

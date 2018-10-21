@@ -132,9 +132,43 @@
     <Content Include="Content\css\form.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\css\times.css" />
+    <Content Include="Content\images\add.png" />
+    <Content Include="Content\images\binoculars.png" />
+    <Content Include="Content\images\bola fora.png" />
+    <Content Include="Content\images\bola.png" />
+    <Content Include="Content\images\bruna-rodrigo.png" />
+    <Content Include="Content\images\camisa.png" />
+    <Content Include="Content\images\campo.png" />
+    <Content Include="Content\images\cards.png" />
+    <Content Include="Content\images\cartao_amarelo.png" />
+    <Content Include="Content\images\cartao_vermelho.png" />
+    <Content Include="Content\images\certo.png" />
+    <Content Include="Content\images\chute a gol.png" />
+    <Content Include="Content\images\chute.png" />
+    <Content Include="Content\images\cruzamento.png" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\dibre.png" />
+    <Content Include="Content\images\edit.png" />
+    <Content Include="Content\images\errado.png" />
+    <Content Include="Content\images\estatistica.png" />
+    <Content Include="Content\images\estatistica2.png" />
+    <Content Include="Content\images\falta.png" />
+    <Content Include="Content\images\gol.png" />
+    <Content Include="Content\images\gol1.png" />
+    <Content Include="Content\images\gol2.png" />
+    <Content Include="Content\images\gol3.png" />
+    <Content Include="Content\images\goleiro1.png" />
+    <Content Include="Content\images\goleiro2.png" />
+    <Content Include="Content\images\info.png" />
+    <Content Include="Content\images\jogador.png" />
+    <Content Include="Content\images\jogador2.png" />
     <Content Include="Content\images\logo-dark.jpg" />
     <Content Include="Content\images\logo-light.jpg" />
     <Content Include="Content\images\Logo.jpg" />
+    <Content Include="Content\images\logoff.png" />
+    <Content Include="Content\images\selecao.png" />
+    <Content Include="Content\images\tomada bola.png" />
+    <Content Include="Content\images\toque.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Administrativo\Partidas\index.js" />
@@ -165,6 +199,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AcontecimentoModel.cs" />
     <Compile Include="Models\JogadorModel.cs" />
     <Compile Include="Models\JogadorViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -173,6 +208,7 @@
     <Compile Include="Models\SessionCheck.cs" />
     <Compile Include="Models\TimeModel.cs" />
     <Compile Include="Models\TimeViewModel.cs" />
+    <Compile Include="Models\TipoAcontecimentoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +239,7 @@
     <Content Include="Views\Escalacao\Adversarios\Index.cshtml" />
     <Content Include="Views\Escalacao\Adversarios\_AdversariosPartial.cshtml" />
     <Content Include="Views\Escalacao\Adversarios\_ModalExcluiAdversarioPartial.cshtml" />
+    <Content Include="Views\Administrativo\Partidas\_ModalNovoAcontecimentoPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

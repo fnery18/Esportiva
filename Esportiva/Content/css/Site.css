@@ -82,3 +82,13 @@ body {
 a i:hover{
     cursor:pointer;
 }
+
+.icone-imagem{
+    width:25px;
+    transition: all 1s;
+}
+
+.icone-imagem:hover{
+    cursor:pointer;
+    background-color: white;
+}

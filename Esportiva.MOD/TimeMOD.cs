@@ -12,5 +12,8 @@ namespace Esportiva.MOD
         public string Cor3 { get; set; }
         public string Nacionalidade { get; set; }
         public DateTime DataFundacao { get; set; }
+
+        public int IdTime1 { get; set; }
+        public int IdTime2 { get; set; }
     }
 }

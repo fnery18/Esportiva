@@ -23,6 +23,11 @@ namespace Esportiva.BLL
             return await _autenticacaoDAL.RetornarUsuario(usuario);
         }
 
+        public async Task<bool> ValidaDonoTime(int codigoUsuario, int time_Id)
+        {
+            return await _autenticacaoDAL.ValidaDonoTime(codigoUsuario, time_Id);
+        }
+
         public async Task<bool> ValidaExclusaoPartida(int codigoPartida, string user)
         {
             var codigoUsuario = (await RetornarUsuario(user))?.Id;
