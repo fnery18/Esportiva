@@ -24,9 +24,14 @@ namespace Esportiva.Controllers
         public async Task<ActionResult> Jogadores(int codigoTime)
         {
             var jogadores = await _escalacaoBLL.RetornarJogadores(codigoTime, Session["user"].ToString());
-            return View("Jogador/Index", jogadores
-                                            .Select(c => new JogadorModel(c))
-                                            .ToList());
+
+            var model = new JogadorViewModel()
+            {
+                Jogadores = jogadores.Select(c => new JogadorModel(c)).ToList(),
+                codigoTime = codigoTime
+            };
+
+            return View("Jogador/Index", model);
 
         }
 
@@ -103,10 +108,17 @@ namespace Esportiva.Controllers
         #endregion
 
         [HttpGet]
-        public async Task<ActionResult> Adversarios()
+        public async Task<ActionResult> Adversarios(int codigoTime)
         {
             var adversarios = await _escalacaoBLL.RetornarAdversarios(Session["user"].ToString());
-            return View("Adversarios/Index", adversarios.Select(c => new TimeModel(c)).ToList());
+
+            var model = new TimeViewModel()
+            {
+                Times = adversarios.Select(c => new TimeModel(c)).ToList(),
+                codigoTime = codigoTime
+            };
+
+            return View("Adversarios/Index", model);
         }
 
     }

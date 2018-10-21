@@ -30,6 +30,6 @@
 
     $(document).on('click', '#btn-adversarios', function () {
         let codigo = $('#codigo-time').val();
-        window.location.href = `/Escalacao/Adversarios/`
+        window.location.href = `/Escalacao/Adversarios?codigoTime=${codigo}`
     });
 })

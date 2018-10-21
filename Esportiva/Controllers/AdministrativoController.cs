@@ -116,7 +116,8 @@ namespace Esportiva.Controllers
             {
                 Partidas = partidas.Select(c => new PartidaModel(c)).ToList(),
                 MeusTimes = (await _administrativoBLL.RetornarTimes(usuario)).Select(c => new TimeModel(c)).ToList(),
-                TimesAdversarios = (await _administrativoBLL.RetornarTimesAdversarios(usuario, codigoTime)).Select(c => new TimeModel(c)).ToList()
+                TimesAdversarios = (await _administrativoBLL.RetornarTimesAdversarios(usuario, codigoTime)).Select(c => new TimeModel(c)).ToList(),
+                codigoTime = codigoTime
             };
 
             return View("Partidas/Index", model);
@@ -125,7 +126,16 @@ namespace Esportiva.Controllers
         [HttpPost]
         public async Task<ActionResult> ExcluirPartida(int codigoPartida)
         {
-            return Json(new { Sucesso = await _administrativoBLL.ExcluirPartida(codigoPartida, Session["user"].ToString()) });
+            try
+            {
+                return Json(new { Sucesso = await _administrativoBLL.ExcluirPartida(codigoPartida, Session["user"].ToString()) });
+            }
+            catch (Exception e)
+            {
+
+                return Json(new { Sucesso = false, Mensagem = e.Message });
+            }
+
         }
 
 

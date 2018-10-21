@@ -166,11 +166,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\JogadorModel.cs" />
+    <Compile Include="Models\JogadorViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PartidaModel.cs" />
     <Compile Include="Models\PartidaViewModel.cs" />
     <Compile Include="Models\SessionCheck.cs" />
     <Compile Include="Models\TimeModel.cs" />
+    <Compile Include="Models\TimeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

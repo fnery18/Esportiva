@@ -1,6 +1,8 @@
 ﻿$(function () {
     $(document).on('click', '#btn-nova-partida', function () {
+        limpaModal();
         $('#modal-partida').modal();
+        
     });
 
     $(document).on('click', '#btn-salvar-partida', function () {
@@ -31,12 +33,12 @@
             "codigoPartida": $('#id-partida').val()
         }, function (retorno) {
             if (retorno.Sucesso) {
-                $("#partial-partidas").load("/Administrativo/Partidas/ #partial-partidas");
+                $("#partial-partidas").load(`/Administrativo/Partidas?codigoTime=${$('#codigo-time').val()} #partial-partidas`);
                 $('.close').trigger('click');
                 MensagemSucesso("Partida Excluida com sucesso!");
             }
             else {
-                MensagemErro();
+                MensagemErroPersonalizada(retorno.Mensagem);
             }
         })
     });
@@ -46,6 +48,13 @@
         $('#modal-excluir-partida').modal();
     });
 
+    const limpaModal = function (){
+        $('#txtLocal').val("");
+        $('#txtData').val("");
+        $('#txtCompeticao').val("");
+        $('#select-time-adversario').prop('selectedIndex', 0);
+        $('#select-time').prop('selectedIndex', 0);
+    }
 
     const validaCamposPartida = function () {
         let local = $('#txtLocal');

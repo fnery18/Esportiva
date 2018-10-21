@@ -1,8 +1,9 @@
-﻿@model List<Esportiva.Models.TimeModel>
+﻿@model Esportiva.Models.TimeViewModel
 @{
     ViewBag.Title = "Adversários";
 }
 
+<input type="hidden" id="codigo-time" />
 <div class="titulo-times">
     <p>
         ADVÉRSARIOS
@@ -15,11 +16,15 @@
 <hr />
 
 <div id="partial-adversarios" class="table-responsive">
-    @Html.Partial("Adversarios/_AdversariosPartial", Model)
+    @Html.Partial("Adversarios/_AdversariosPartial", Model.Times)
 </div>
 
 @Html.Partial("../Administrativo/Time/_ModalNovoTimePartial")
 @Html.Partial("Adversarios/_ModalExcluiAdversarioPartial")
+
+<div class="text-center">
+    <a href="/Administrativo/EditarTime?codigoTime=@Model.codigoTime" class="btn btn-primary" data-original-title="" title="">VOLTAR</a>
+</div>
 
 @section Styles{
     <link href="~/Content/css/times.css" rel="stylesheet" />

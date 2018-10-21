@@ -226,7 +226,7 @@ namespace Esportiva.DAL
                 #region query
                 const string query = @"
                                 DELETE FROM 
-                                    Partida 
+                                    Partidas
                                 WHERE 
                                     Id = @codigoPartida";
                 #endregion

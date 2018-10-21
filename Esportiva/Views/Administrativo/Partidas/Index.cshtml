@@ -3,6 +3,7 @@
     ViewBag.Title = "Partidas";
 }
 
+<input type="hidden" id="codigo-time" value="@Model.codigoTime" />
 <div class="titulo-times">
     <p>
         PARTIDAS
@@ -16,6 +17,10 @@
 
 <div id="partial-partidas">
     @Html.Partial("Partidas/_PartidasPartial", Model.Partidas)
+</div>
+
+<div class="text-center">
+    <a href="/Administrativo/EditarTime?codigoTime=@Model.codigoTime" class="btn btn-primary" data-original-title="" title="">VOLTAR</a>
 </div>
 
 @Html.Partial("Partidas/_ModalNovaPartidaPartial", Model)

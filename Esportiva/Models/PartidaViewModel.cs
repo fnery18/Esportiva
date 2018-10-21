@@ -7,5 +7,6 @@ namespace Esportiva.Models
         public List<PartidaModel> Partidas { get; set; }
         public List<TimeModel> MeusTimes { get; set; }
         public List<TimeModel> TimesAdversarios { get; set; }
+        public int codigoTime { get; set; }
     }
 }
