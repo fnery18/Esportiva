@@ -36,7 +36,7 @@ namespace Esportiva.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CadastrarTime(TimeModel time, string nomeAntigo)
+        public async Task<ActionResult> CadastrarTime(TimeModel time, string nomeAntigo, bool adversario = false)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Esportiva.Controllers
 
                     if (!timeExiste)
                     {
-                        bool cadastrou = await _administrativoBLL.CadastrarTime(novoTime, usuario);
+                        bool cadastrou = await _administrativoBLL.CadastrarTime(novoTime, usuario, adversario);
                         if (cadastrou)
                             return Json(new { Sucesso = true, Mensagem = "Time cadastrado com sucesso!" });
                         else
@@ -81,9 +81,9 @@ namespace Esportiva.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> ExcluirTime(int codigoTime)
+        public async Task<JsonResult> ExcluirTime(int codigoTime, bool adversario = false)
         {
-            return Json(new { Sucesso = await _administrativoBLL.ExcluirTime(codigoTime, Session["user"].ToString()) });
+            return Json(new { Sucesso = await _administrativoBLL.ExcluirTime(codigoTime, Session["user"].ToString(), adversario) });
         }
 
         [HttpGet]
@@ -95,7 +95,7 @@ namespace Esportiva.Controllers
 
         #endregion
 
-        #region ACONTECIMENTOS
+        #region ACONTECIMENTOS / PARTIDAS
 
         [HttpGet]
         public async Task<ActionResult> Acontecimentos(int codigoTime)
@@ -105,6 +105,62 @@ namespace Esportiva.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Partidas(int codigoTime)
+        {
+            var login = Session["user"].ToString();
+            var partidas = await _administrativoBLL.RetornarPartidas(codigoTime, login);
+            var usuario = await _autenticaBLL.RetornarUsuario(login);
+
+            var model = new PartidaViewModel()
+            {
+                Partidas = partidas.Select(c => new PartidaModel(c)).ToList(),
+                MeusTimes = (await _administrativoBLL.RetornarTimes(usuario)).Select(c => new TimeModel(c)).ToList(),
+                TimesAdversarios = (await _administrativoBLL.RetornarTimesAdversarios(usuario, codigoTime)).Select(c => new TimeModel(c)).ToList()
+            };
+
+            return View("Partidas/Index", model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ExcluirPartida(int codigoPartida)
+        {
+            return Json(new { Sucesso = await _administrativoBLL.ExcluirPartida(codigoPartida, Session["user"].ToString()) });
+        }
+
+
+        [HttpPost]
+
+        public async Task<JsonResult> CadastrarPartida(PartidaModel partida)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var cadastrou = await _administrativoBLL.CadastrarPartida(new PartidasMOD()
+                    {
+                        Competicao = partida.Competicao,
+                        DataPartida = partida.DataPartida,
+                        IdTime1 = partida.IdTime1,
+                        IdTime2 = partida.IdTime2,
+                        LocalCompeticao = partida.LocalCompeticao,
+                        NomePartida = partida.NomePartida
+                    });
+
+                    if (cadastrou)
+                        return Json(new { Sucesso = true, Mensagem = "Partida cadastrada com sucesso!" });
+                    return Json(new { Sucesso = false, Mensagem = "Ops! Ocorreu um erro ao cadastrar a partida." });
+                }
+
+                return Json(new { Sucesso = false, Mensagem = "Campos não preenchidos corretamente." });
+            }
+            catch (Exception e)
+            {
+
+                return Json(new { Sucesso = false, Mensagem = e.Message });
+            }
+
+        }
         #endregion
 
     }

@@ -1,0 +1,30 @@
+﻿@model List<Esportiva.Models.TimeModel>
+@{
+    ViewBag.Title = "Adversários";
+}
+
+<div class="titulo-times">
+    <p>
+        ADVÉRSARIOS
+        <a class="habilita-tooltip" data-toggle="tooltip" data-original-title="Novo" data-placement="right" id="btn-novo-adversario">
+            <i class="fa fa-plus"></i>
+        </a>
+    </p>
+</div>
+
+<hr />
+
+<div id="partial-adversarios" class="table-responsive">
+    @Html.Partial("Adversarios/_AdversariosPartial", Model)
+</div>
+
+@Html.Partial("../Administrativo/Time/_ModalNovoTimePartial")
+@Html.Partial("Adversarios/_ModalExcluiAdversarioPartial")
+
+@section Styles{
+    <link href="~/Content/css/times.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/Escalacao/adversario.js"></script>
+}

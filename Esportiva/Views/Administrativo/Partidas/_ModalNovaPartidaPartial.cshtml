@@ -1,0 +1,93 @@
+﻿@model Esportiva.Models.PartidaViewModel
+
+<div class="modal fade" id="modal-partida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="titulo-padrao">
+                    Nova partida
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6 hidden">
+                            <div class="form-group">
+                                <i class="fa fa-futbol"></i>
+                                <label>Nome da partida: </label>
+                                <input type="text" id="txtNome" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <i class="fa fa-map-marker"></i>
+                                <label>Local da competição: </label>
+                                <input type="text" id="txtLocal" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-calendar"></i>
+                                <label>Data da partida: </label>
+                                <input type="date" id="txtData" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-trophy"></i>
+                                <label>Competição: </label>
+                                <input type="text" id="txtCompeticao" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-users"></i>
+                                <label>Meu Time</label>
+                                <select class="form-control" id="select-time">
+                                    <option value="">Selecione o seu time</option>
+                                    @foreach (var time in Model.MeusTimes)
+                                    {
+                                        <option value="@time.Id">@time.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <i class="fa fa-users"></i>
+                                <label>Time Adversário</label>
+                                <select class="form-control" id="select-time-adversario">
+                                    <option value="">Selecione um adversário</option>
+                                    @foreach (var time in Model.TimesAdversarios)
+                                    {
+                                        <option value="@time.Id">@time.Nome</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-padrao" id="btn-salvar-partida">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>

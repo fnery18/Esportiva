@@ -3,14 +3,13 @@ using Esportiva.DAL.Interfaces;
 using Esportiva.MOD;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Esportiva.DAL
 {
     public class EscalacaoDAL : IEscalacaoDAL
     {
+        #region JOGADORES
         public async Task<bool> CadastrarJogador(JogadorMOD jogadorMOD)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())
@@ -49,29 +48,9 @@ namespace Esportiva.DAL
                 {
                     return false;
                 }
-              
+
             }
         }
-
-        public async Task<int> RetornarCodigoTime(string usuario)
-        {
-            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
-            {
-                #region "QUERY"
-                const string query = @"
-                                SELECT 
-	                                Times.Id 
-                                FROM 
-	                                Times 
-                                INNER JOIN Usuarios ON Times.Usuario_id = Usuarios.Id
-                                WHERE 
-                                    Usuarios.Usuario = @usuario";
-                #endregion
-
-                return await connection.QueryFirstOrDefaultAsync<int>(query, new { usuario });
-            }
-        }
-
         public async Task<List<JogadorMOD>> RetornarJogadores(int codigoTime, int codigoUsuario)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())
@@ -99,5 +78,52 @@ namespace Esportiva.DAL
                 return await connection.QueryAsync<JogadorMOD>(query, new { codigoUsuario, codigoTime }) as List<JogadorMOD>;
             }
         }
+
+        #endregion
+
+        #region TIME
+        public async Task<int> RetornarCodigoTime(string usuario)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region "QUERY"
+                const string query = @"
+                                SELECT 
+	                                Times.Id 
+                                FROM 
+	                                Times 
+                                INNER JOIN Usuarios ON Times.Usuario_id = Usuarios.Id
+                                WHERE 
+                                    Usuarios.Usuario = @usuario";
+                #endregion
+
+                return await connection.QueryFirstOrDefaultAsync<int>(query, new { usuario });
+            }
+        }
+
+        #endregion
+
+        public async Task<List<TimeMOD>> RetornarAdversarios(int codigoUsuario)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                SELECT 
+                                    *   
+                                FROM 
+                                    Times 
+                                WHERE 
+                                    Usuario_id != @codigoUsuario";
+                #endregion
+
+                return await connection.QueryAsync<TimeMOD>(query, new { codigoUsuario }) as List<TimeMOD>;
+            }
+
+
+        }
+
+
+
     }
 }

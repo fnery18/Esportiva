@@ -17,4 +17,19 @@
         let codigo = $('#codigo-time').val();
         window.location.href = `/Escalacao/Jogadores?codigoTime=${codigo}`
     });
+
+    $(document).on('click', '#btn-partidas', function () {
+        let codigo = $('#codigo-time').val();
+        window.location.href = `/Administrativo/Partidas?codigoTime=${codigo}`
+    });
+
+    $(document).on('click', '#btn-relatorios', function () {
+        let codigo = $('#codigo-time').val();
+        window.location.href = `/Escalacao/Jogadores?codigoTime=${codigo}`
+    });
+
+    $(document).on('click', '#btn-adversarios', function () {
+        let codigo = $('#codigo-time').val();
+        window.location.href = `/Escalacao/Adversarios/`
+    });
 })

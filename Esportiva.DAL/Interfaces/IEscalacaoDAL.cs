@@ -13,5 +13,6 @@ namespace Esportiva.DAL.Interfaces
         Task<bool> CadastrarJogador(JogadorMOD jogadorMOD);
         Task<int> RetornarCodigoTime(string usuario);
         Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario);
+        Task<List<TimeMOD>> RetornarAdversarios(int id);
     }
 }

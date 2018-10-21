@@ -2,10 +2,8 @@
 using Esportiva.MOD;
 using Esportiva.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Esportiva.Controllers
@@ -18,6 +16,9 @@ namespace Esportiva.Controllers
         {
             _escalacaoBLL = escalacaoBLL;
         }
+
+
+        #region JOGADORES
 
         [HttpGet]
         public async Task<ActionResult> Jogadores(int codigoTime)
@@ -99,5 +100,14 @@ namespace Esportiva.Controllers
                 return Json(new { Sucesso = false, Mensagem = e.Message });
             }
         }
+        #endregion
+
+        [HttpGet]
+        public async Task<ActionResult> Adversarios()
+        {
+            var adversarios = await _escalacaoBLL.RetornarAdversarios(Session["user"].ToString());
+            return View("Adversarios/Index", adversarios.Select(c => new TimeModel(c)).ToList());
+        }
+
     }
 }

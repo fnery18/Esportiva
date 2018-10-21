@@ -1,0 +1,30 @@
+﻿@model Esportiva.Models.PartidaViewModel
+@{
+    ViewBag.Title = "Partidas";
+}
+
+<div class="titulo-times">
+    <p>
+        PARTIDAS
+        <a class="habilita-tooltip" data-toggle="tooltip" data-original-title="Nova" data-placement="right" id="btn-nova-partida">
+            <i class="fa fa-plus"></i>
+        </a>
+    </p>
+</div>
+
+<hr />
+
+<div id="partial-partidas">
+    @Html.Partial("Partidas/_PartidasPartial", Model.Partidas)
+</div>
+
+@Html.Partial("Partidas/_ModalNovaPartidaPartial", Model)
+@Html.Partial("Partidas/_ModalExcluiPartidaPartial")
+
+@section Styles{
+    <link href="~/Content/css/times.css" rel="stylesheet" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/Administrativo/Partidas/index.js"></script>
+}

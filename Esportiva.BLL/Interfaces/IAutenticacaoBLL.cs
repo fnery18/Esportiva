@@ -8,5 +8,6 @@ namespace Esportiva.BLL.Interfaces
         Task<bool> ValidaUsuario(LoginMOD usuario);
         Task CadastrarUsuario(LoginMOD loginMOD);
         Task<LoginMOD> RetornarUsuario(string usuario);
+        Task<bool> ValidaExclusaoPartida(int codigoPartida, string user);
     }
 }

@@ -137,6 +137,7 @@
     <Content Include="Content\images\Logo.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Administrativo\Partidas\index.js" />
     <Content Include="Scripts\Administrativo\Times\editar.js" />
     <Content Include="Scripts\Administrativo\Times\index.js" />
     <Content Include="Scripts\Autenticacao\autentica.js" />
@@ -146,6 +147,7 @@
     <Content Include="Content\webfonts\fa-solid-900.woff" />
     <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Escalacao\adversario.js" />
     <Content Include="Scripts\Escalacao\jogador.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -165,6 +167,8 @@
     </Compile>
     <Compile Include="Models\JogadorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\PartidaModel.cs" />
+    <Compile Include="Models\PartidaViewModel.cs" />
     <Compile Include="Models\SessionCheck.cs" />
     <Compile Include="Models\TimeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,6 +194,13 @@
     <Content Include="Views\Escalacao\Jogador\_JogadoresPartial.cshtml" />
     <Content Include="Views\Escalacao\Jogador\_ModalNovoJogadorPartial.cshtml" />
     <Content Include="Views\Escalacao\Jogador\_ModalExcluirJogadorPartial.cshtml" />
+    <Content Include="Views\Administrativo\Partidas\_PartidasPartial.cshtml" />
+    <Content Include="Views\Administrativo\Partidas\_ModalNovaPartidaPartial.cshtml" />
+    <Content Include="Views\Administrativo\Partidas\_ModalExcluiPartidaPartial.cshtml" />
+    <Content Include="Views\Administrativo\Partidas\Index.cshtml" />
+    <Content Include="Views\Escalacao\Adversarios\Index.cshtml" />
+    <Content Include="Views\Escalacao\Adversarios\_AdversariosPartial.cshtml" />
+    <Content Include="Views\Escalacao\Adversarios\_ModalExcluiAdversarioPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

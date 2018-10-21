@@ -1,4 +1,12 @@
-﻿function esconderAlerts() {
+﻿$(function () {
+    habilitaTooltip();
+});
+
+const habilitaTooltip = function () {
+    $('.habilita-tooltip').tooltip();
+}
+
+function esconderAlerts() {
     setTimeout(function () {
         $(".alert").fadeOut("slow")
     }, 5000)

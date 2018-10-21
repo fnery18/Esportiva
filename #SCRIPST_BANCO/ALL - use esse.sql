@@ -19,6 +19,10 @@ CREATE TABLE [dbo].[Usuarios](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO 
+
+INSERT INTO USUARIOS VALUES ('adversario', 'asdkasjdklasjdklandkla');
+
+GO
 /*final criacao tabela de usuarios*/
 
 /*-----------------------------------*/
@@ -28,8 +32,8 @@ CREATE TABLE [dbo].[Times](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Nome] [varchar](255) NOT NULL,
 	[Cor1] [varchar](255) NOT NULL,
-	[Cor2] [varchar](255) NOT NULL,
-	[Cor3] [varchar](255) NOT NULL,
+	[Cor2] [varchar](255),
+	[Cor3] [varchar](255),
 	[Sigla] [varchar] (255) NOT NULL,
 	[Nacionalidade] [varchar](255) NOT NULL,
 	[DataFundacao] [date] NOT NULL,

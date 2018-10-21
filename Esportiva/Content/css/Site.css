@@ -78,3 +78,7 @@ body {
 .saudacao:hover{
     color: #fff;
 }
+
+a i:hover{
+    cursor:pointer;
+}

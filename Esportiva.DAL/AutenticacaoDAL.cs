@@ -42,6 +42,26 @@ namespace Esportiva.DAL
             }
         }
 
+        public async Task<bool> ValidaExclusaoPartida(int? codigoUsuario, int codigoPartida)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                SELECT
+	                                *
+                                FROM
+	                                Partidas
+                                INNER JOIN Times ON Times.Id = Partidas.Time1_Id
+                                INNER JOIN Usuarios ON Times.Usuario_id = Usuarios.Id
+                                WHERE 
+                                    Partidas.Id = @codigoPartida AND Usuarios.Id = @codigoUsuario";
+                #endregion
+
+                return await connection.QueryFirstOrDefaultAsync<PartidasMOD>(query, new { codigoPartida, codigoUsuario }) != null;
+            }
+        }
+
         public async Task<bool> ValidaUsuario(LoginMOD usuario)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())
