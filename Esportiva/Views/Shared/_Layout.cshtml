@@ -21,24 +21,16 @@
                 </button>
 
                 @*@Html.ActionLink("ESPORTIVA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                <img src="~/Content/images/Logo.jpg" class="logo-menu" />
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li class="dropdown @(ViewContext.RouteData.Values["Action"].ToString().ToLower().Contains("Produto") ? "ativo" : "")">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Produtos <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="~/Produto/Cadastrar">Gestão Futebolística</a></li>
-                        </ul>
-                    </li>
-
-                    <li>@Html.ActionLink("Preços", "Index", "Home")</li>
-
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString().ToLower().Contains("Home") ? "ativo" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
+                   
                     @if (Session["user"] != null)
                     {
                         <li><a class="saudacao">Olá @Session["user"]</a></li>
-                        <li>@Html.ActionLink("Meu Time", "Time", "Administrativo")</li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString().ToLower().Contains("Administrativo") ? "ativo" : "")">@Html.ActionLink("Meu Time", "Time", "Administrativo")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Autenticacao")</li>
                     }
                     else
@@ -56,7 +48,7 @@
         <br /><br />    
         <div id="alert-helper" style="z-index: 99999999;"></div>
         @RenderBody()
-        <hr />
+        
         <footer>
             
         </footer>

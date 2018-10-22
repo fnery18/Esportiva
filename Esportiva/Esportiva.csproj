@@ -131,6 +131,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\fontawesome-all.min.css" />
     <Content Include="Content\css\form.css" />
+    <Content Include="Content\css\home.css" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\css\times.css" />
     <Content Include="Content\images\add.png" />
@@ -168,7 +169,7 @@
     <Content Include="Content\images\Logo.jpg" />
     <Content Include="Content\images\logoff.png" />
     <Content Include="Content\images\selecao.png" />
-    <Content Include="Content\images\tomada bola.png" />
+    <Content Include="Content\images\tomada_bola.png" />
     <Content Include="Content\images\toque.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

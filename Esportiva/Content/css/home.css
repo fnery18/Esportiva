@@ -1,0 +1,50 @@
+﻿.card-vantagem {
+    width: 200px;
+    background-color: var(--color-dark-blue);
+    padding: 20px;
+    height: 350px;
+    border: 20px solid #2c3e50;
+    transition: all .5s;
+}
+
+    .card-vantagem:hover {
+        border: 20px solid var(--color-red);
+        cursor: pointer;
+    }
+
+        .card-vantagem:hover p {
+            
+        }
+
+.card-vantagem img{
+    height: 64px;    
+}
+.icone-preto{
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 5px;
+}
+h1{
+    letter-spacing: 3px;
+}
+
+.text-vantagem{
+    margin-top: 20px;
+    color: #fff;
+    text-align:center;
+}
+
+#banner {
+    background-color: #000;
+    width: 100%;
+}
+
+.titulo{
+    margin: 100px 0 40px 0;
+}
+
+#vantagens {
+    margin-bottom: 20px;
+    height: 350px;
+    
+}
