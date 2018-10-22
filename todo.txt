@@ -1,0 +1,8 @@
+Todo{
+	colocar contador de acontecimentos no icone de ver detalhes na partial de partidas
+	Colocar tela de pagina nao encontrada
+	fazer no autenticacao nao deixar criar mesmo usuario
+	colocar fav icon
+	fazer a home page anunciando o produto
+	testar tudo (acho que ja ta funcionando mas vai q mudou algum codigo e cagou)
+}
