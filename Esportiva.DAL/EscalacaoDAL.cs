@@ -123,7 +123,26 @@ namespace Esportiva.DAL
 
         }
 
+        public async Task<List<RelatorioMOD>> RetornarRelatorioAcontecimentos(int codigoTime)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region query
+                const string query = @"
+                                SELECT
+	                                TipoAcontecimento.Nome, Count(*) as Quantidade
+                                FROM
+	                                Acontecimentos
+								INNER JOIN 
+									TipoAcontecimento ON Acontecimentos.TipoAcontecimento_Id = TipoAcontecimento.Id
+                                WHERE
+                                    Time_Id = 2
+                                GROUP BY
+	                                TipoAcontecimento.Nome";
+                #endregion
 
-
+                return await connection.QueryAsync<RelatorioMOD>(query, new { codigoTime }) as List<RelatorioMOD>;
+            }
+        }
     }
 }

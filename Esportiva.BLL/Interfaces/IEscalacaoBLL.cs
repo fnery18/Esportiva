@@ -10,5 +10,6 @@ namespace Esportiva.BLL.Interfaces
         Task<bool> CadastrarJogador(JogadorMOD jogadorMOD, string usuario);
         Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario);
         Task<List<TimeMOD>> RetornarAdversarios(string usuarios);
+        Task<List<RelatorioMOD>> RetornarRelatorioAcontecimentos(int codigoTime);
     }
 }

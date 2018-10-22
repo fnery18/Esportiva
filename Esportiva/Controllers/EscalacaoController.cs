@@ -121,5 +121,24 @@ namespace Esportiva.Controllers
             return View("Adversarios/Index", model);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Relatorios(int codigoTime)
+        {
+            return View(model: codigoTime);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> RetornarRelatorios(int codigoTime)
+        {
+            var acontecimentos = await _escalacaoBLL.RetornarRelatorioAcontecimentos(codigoTime);
+            var model = new RelatorioViewModel()
+            {
+                NomeAcontecimento = acontecimentos.Select(c => c.Nome).ToList(),
+                QuantidadeAcontecimento = acontecimentos.Select(c => c.Quantidade).ToList()
+            };
+
+            return Json(new { Nome = model.NomeAcontecimento, Quantidade = model.QuantidadeAcontecimento }, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

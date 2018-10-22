@@ -25,7 +25,7 @@
 
     $(document).on('click', '#btn-relatorios', function () {
         let codigo = $('#codigo-time').val();
-        window.location.href = `/Escalacao/Jogadores?codigoTime=${codigo}`
+        window.location.href = `/Escalacao/Relatorios?codigoTime=${codigo}`
     });
 
     $(document).on('click', '#btn-adversarios', function () {

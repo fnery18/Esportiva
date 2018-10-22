@@ -49,5 +49,10 @@ namespace Esportiva.BLL
                 return await _escalacaoDAL.RetornarAdversarios(usuario.Id);
             return new List<TimeMOD>();
         }
+
+        public async Task<List<RelatorioMOD>> RetornarRelatorioAcontecimentos(int codigoTime)
+        {
+            return await _escalacaoDAL.RetornarRelatorioAcontecimentos(codigoTime);
+        }
     }
 }

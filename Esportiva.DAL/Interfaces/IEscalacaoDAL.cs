@@ -1,8 +1,5 @@
 ﻿using Esportiva.MOD;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Esportiva.DAL.Interfaces
@@ -14,5 +11,6 @@ namespace Esportiva.DAL.Interfaces
         Task<int> RetornarCodigoTime(string usuario);
         Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario);
         Task<List<TimeMOD>> RetornarAdversarios(int id);
+        Task<List<RelatorioMOD>> RetornarRelatorioAcontecimentos(int codigoTime);
     }
 }

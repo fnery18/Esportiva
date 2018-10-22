@@ -126,6 +126,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\acontecimento.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\fontawesome-all.min.css" />
@@ -181,11 +182,14 @@
     <Content Include="Content\webfonts\fa-solid-900.woff" />
     <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.bundle.min.js" />
+    <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\Escalacao\adversario.js" />
     <Content Include="Scripts\Escalacao\jogador.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\relatorio.js" />
     <Content Include="Scripts\util\alert.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -206,6 +210,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PartidaModel.cs" />
     <Compile Include="Models\PartidaViewModel.cs" />
+    <Compile Include="Models\RelatorioViewModel.cs" />
     <Compile Include="Models\SessionCheck.cs" />
     <Compile Include="Models\TimeModel.cs" />
     <Compile Include="Models\TimeViewModel.cs" />
@@ -242,6 +247,7 @@
     <Content Include="Views\Escalacao\Adversarios\_ModalExcluiAdversarioPartial.cshtml" />
     <Content Include="Views\Administrativo\Partidas\_ModalNovoAcontecimentoPartial.cshtml" />
     <Content Include="Views\Administrativo\Partidas\_ModalDetalhesAcontecimentosPartial.cshtml" />
+    <Content Include="Views\Escalacao\Relatorios.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

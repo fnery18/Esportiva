@@ -1,0 +1,27 @@
+﻿@model int
+@{
+    ViewBag.Title = "Relatorios";
+}
+
+<input type="hidden" id="codigo-time" value="@Model" />
+<div class="titulo-times">
+    <p>
+        <img src="~/Content/images/estatistica.png" /> RELATÓRIOS
+    </p>
+</div>
+
+<h2 class="titulo-padrao text-center"><img src="~/Content/images/estatistica2.png"/> Acontecimentos nas partidas</h2>
+<div class="col-md-12">
+    <canvas width="600" height="200" id="acontecimentos"></canvas>
+</div>
+
+
+@section styles{
+    <link href="~/Content/css/times.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/Chart.bundle.min.js"></script>
+    
+    <script src="~/Scripts/relatorio.js"></script>
+}
+
