@@ -136,7 +136,7 @@ namespace Esportiva.DAL
 								INNER JOIN 
 									TipoAcontecimento ON Acontecimentos.TipoAcontecimento_Id = TipoAcontecimento.Id
                                 WHERE
-                                    Time_Id = 2
+                                    Time_Id = @codigoTime
                                 GROUP BY
 	                                TipoAcontecimento.Nome";
                 #endregion

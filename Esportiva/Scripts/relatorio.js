@@ -3,9 +3,6 @@
 
 
     $.get(`/Escalacao/RetornarRelatorios?codigoTime=${codigoTime}`, function (retorno) {
-
-        console.log(retorno);
-        console.log(retorno.NomeAcontecimento);
         var ctx = $('#acontecimentos').get(0).getContext("2d");
         var data = {
             datasets: [{
@@ -29,7 +26,7 @@
             
             cores.push('#' + Math.floor(Math.random() * 16777215).toString(16));
         }
-        console.log(quantidade);
+
         return cores;
     }
 });
