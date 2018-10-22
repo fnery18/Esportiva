@@ -77,6 +77,21 @@
         }
     });
 
+    $(document).on('click', 'a[data-opcao="ver-acontecimentos"]', function () {
+        renderizaAcontecimentos($(this).data("id-time"), $(this).data("id-partida"));
+    });
+
+
+    const renderizaAcontecimentos = function (codigoTime, codigoPartida) {
+
+        $('#detalhes-acontecimentos').html("");
+
+        $.get(`/Administrativo/Acontecimentos?codigoTime=${codigoTime}&codigoPartida=${codigoPartida}`, function (partial) {
+            $('#detalhes-acontecimentos').html(partial);
+            $('#modal-visualizar-acontecimentos').modal();
+        })
+    }
+
     const validaCamposAcontecimentos = function () {
         let jogador = $('#select-jogadores');
         let tempo = $('#txtTempo');

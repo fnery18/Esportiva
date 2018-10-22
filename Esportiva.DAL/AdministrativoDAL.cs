@@ -141,29 +141,30 @@ namespace Esportiva.DAL
 
         #endregion
 
-        public async Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user)
+        public async Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user, int codigoPartida)
         {
             using (var connection = await ConnectionFactory.RetornarConexaoAsync())
             {
                 #region query
                 const string query = @"
                                 SELECT 
-	                                Acontecimentos.Id as IdAcontecimento, 
+	                                Acontecimentos.Id as IdAcontecimento, Acontecimentos.Tempo, 
 	                                Jogadores.Id as IdJogadores, Jogadores.Nome, Jogadores.Sobrenome, Jogadores.Posicao, Jogadores.DataNascimento, Times.Nome as Time, Jogadores.NumeroCamisa, Jogadores.Apelido, Jogadores.Altura,
 	                                Partidas.Id as IdPartidas, Partidas.NomePartida, Partidas.DataPartida, Partidas.Time1_Id, Times.Nome, Partidas.Time2_Id, Adversario.Nome, Partidas.LocalCompeticao, Partidas.Competicao,
-	                                Times.Id as IdTimes, Times.Nome,Times.Sigla, Times.Cor1, Times.Cor2, Times.Cor3, Times.Nacionalidade, Times.DataFundacao,
+	                                Times.Id as Id, Times.Nome,Times.Sigla, Times.Cor1, Times.Cor2, Times.Cor3, Times.Nacionalidade, Times.DataFundacao,
 	                                TipoAcontecimento.Id as IdTipoAcontecimento, TipoAcontecimento.Nome, TipoAcontecimento.Icone
                                 FROM 
 	                                Acontecimentos	
                                 INNER JOIN Times ON Acontecimentos.Time_Id = Times.Id
                                 INNER JOIN Usuarios ON Times.Usuario_id = Usuarios.Id
                                 INNER JOIN Jogadores ON Acontecimentos.Jogador_Id = Jogadores.Id
-                                INNER JOIN TipoAcontecimento ON Acontecimentos.TipoAcontecimento_Id = Acontecimentos.TipoAcontecimento_Id
+                                INNER JOIN TipoAcontecimento ON Acontecimentos.TipoAcontecimento_Id = TipoAcontecimento.Id
                                 INNER JOIN Partidas ON Acontecimentos.Partida_Id = Partidas.Id
-                                INNER JOIN Times as Adversario ON Partidas.Time2_Id = Times.Id
-
+                                INNER JOIN Times as Adversario ON Partidas.Time2_Id = Adversario.Id
                                 WHERE 
-	                                Usuarios.Usuario = @user AND Times.Id = @codigoTime";
+	                                Usuarios.Usuario = @user AND Times.Id = @codigoTime AND Acontecimentos.Partida_Id = @codigoPartida
+                                ORDER BY
+                                    Tempo";
                 #endregion
 
                 var acontecimentos = await connection.QueryAsync<AcontecimentosMOD, JogadorMOD, PartidasMOD, TimeMOD, TipoAcontecimentoMOD, AcontecimentosMOD>(query,
@@ -177,8 +178,9 @@ namespace Esportiva.DAL
                     }, new
                     {
                         user,
-                        codigoTime
-                    }, splitOn: "IdJogadores, IdPartidas, IdTimes, IdTipoAcontecimento") as List<AcontecimentosMOD>;
+                        codigoTime,
+                        codigoPartida
+                    }, splitOn: "IdJogadores, IdPartidas, Id, IdTipoAcontecimento") as List<AcontecimentosMOD>;
 
                 return acontecimentos;
             }

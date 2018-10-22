@@ -1,0 +1,34 @@
+﻿@model List<Esportiva.MOD.AcontecimentosMOD>
+
+<div class="modal fade" id="modal-visualizar-acontecimentos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="titulo-padrao">
+                    Acontecimentos
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </h5>
+            </div>
+            <div class="modal-body">
+                @foreach (var acontecimento in Model)
+                {
+                    <div class="row text-center">
+                        <div class="col-md-12 card-acontecimendo">
+                            <p>@(acontecimento.Tempo + "'") <i class="fa fa-clock"></i> - @acontecimento.TipoAcontecimento.Nome</p>
+                            <p><img class="icone-imagem" src="~/Content/images/@acontecimento.TipoAcontecimento.Icone" /> @(" " + acontecimento.Jogador.Nome + " " + acontecimento.Jogador.Sobrenome) <img src="~/Content/images/jogador.png" /></p>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-12 linha-tempo text-center">|</div>
+                    <br />
+                }
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

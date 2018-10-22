@@ -15,7 +15,7 @@
             "adversario": true
         }, function (retorno) {
             if (retorno.Sucesso) {
-                $("#partial-adversarios").load("/Escalacao/Adversarios/ #partial-adversarios");
+                $("#partial-adversarios").load(`/Escalacao/Adversarios?codigoTime=${$('#codigo-time').val()} #partial-adversarios`);
                 $('.close').trigger('click');
                 MensagemSucesso("Time Excluido com sucesso!");
                 habilitaTooltip();
@@ -42,7 +42,7 @@
                 "Cor3": '#000',
             }, function (retorno) {
                 if (retorno.Sucesso) {
-                    $("#partial-adversarios").load("/Escalacao/Adversarios/ #partial-adversarios");
+                    $("#partial-adversarios").load(`/Escalacao/Adversarios?codigoTime=${$('#codigo-time').val()} #partial-adversarios`);
                     $('.close').trigger('click');
                     MensagemSucesso(retorno.Mensagem);
                     habilitaTooltip();

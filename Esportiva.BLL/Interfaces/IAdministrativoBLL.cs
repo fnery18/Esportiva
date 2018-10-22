@@ -12,7 +12,7 @@ namespace Esportiva.BLL.Interfaces
         Task<TimeMOD> RetornarTime(int codigoTime, string usuario);
         Task<bool> RetornarTimeExiste(string nome);
         Task AlterarTime(TimeMOD novoTime, string nome, string usuario);
-        Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user);
+        Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user, int codigoPartida);
         Task<List<PartidasMOD>> RetornarPartidas(int codigoTime, string user);
         Task<bool> ExcluirPartida(int codigoPartida, string user);
         Task<bool> CadastrarPartida(PartidasMOD partida);

@@ -90,9 +90,9 @@ namespace Esportiva.BLL
         #endregion
 
 
-        public async Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user)
+        public async Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user, int codigoPartida)
         {
-            return await _administrativoDAL.RetornarAcontecimentos(codigoTime, user);
+            return await _administrativoDAL.RetornarAcontecimentos(codigoTime, user, codigoPartida);
         }
 
         public async Task<List<PartidasMOD>> RetornarPartidas(int codigoTime, string user)

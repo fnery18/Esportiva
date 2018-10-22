@@ -19,16 +19,21 @@
     @Html.Partial("Partidas/_PartidasPartial", Model.Partidas)
 </div>
 
+<br />
 <div class="text-center">
     <a href="/Administrativo/EditarTime?codigoTime=@Model.codigoTime" class="btn btn-primary" data-original-title="" title="">VOLTAR</a>
 </div>
 
+<div id="detalhes-acontecimentos">
+    @*modal sera renderizado aqui*@
+</div>
 @Html.Partial("Partidas/_ModalNovaPartidaPartial", Model)
 @Html.Partial("Partidas/_ModalExcluiPartidaPartial")
 @Html.Partial("Partidas/_ModalNovoAcontecimentoPartial", Model)
 
 @section Styles{
     <link href="~/Content/css/times.css" rel="stylesheet" />
+<link href="~/Content/css/acontecimento.css" rel="stylesheet" />
 }
 
 @section Scripts{

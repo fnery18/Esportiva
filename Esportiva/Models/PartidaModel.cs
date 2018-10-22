@@ -38,8 +38,8 @@ namespace Esportiva.Models
             DataPartida = partida.DataPartida;
             IdTime1 = partida.IdTime1;
             IdTime2 = partida.IdTime2;
-            Time1 = new TimeModel(partida.Time1);
-            Time2 = new TimeModel(partida.Time2);
+            Time1 = new TimeModel(partida.Time1) ?? null;
+            Time2 = new TimeModel(partida.Time2) ?? null;
             LocalCompeticao = partida.LocalCompeticao;
             Competicao = partida.Competicao;
         }

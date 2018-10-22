@@ -12,7 +12,7 @@ namespace Esportiva.DAL.Interfaces
         Task<TimeMOD> RetornarTime(int codigoTime, int codigoUsuario);
         Task<TimeMOD> RetornarTime(string nome);
         Task AlterarTime(TimeMOD novoTime, string nomeTime, int codigoUsuario);
-        Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user);
+        Task<List<AcontecimentosMOD>> RetornarAcontecimentos(int codigoTime, string user, int codigoPartida);
         Task<List<PartidasMOD>> RetornarPartidas(int codigoTime, string user);
         Task<bool> ExcluirPartida(int codigoPartida);
         Task<List<TimeMOD>> RetornarTimesAdversarios(int id, int codigoTime);

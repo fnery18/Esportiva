@@ -200,6 +200,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AcontecimentoModel.cs" />
+    <Compile Include="Models\AcontecimentoViewModel.cs" />
     <Compile Include="Models\JogadorModel.cs" />
     <Compile Include="Models\JogadorViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -240,6 +241,7 @@
     <Content Include="Views\Escalacao\Adversarios\_AdversariosPartial.cshtml" />
     <Content Include="Views\Escalacao\Adversarios\_ModalExcluiAdversarioPartial.cshtml" />
     <Content Include="Views\Administrativo\Partidas\_ModalNovoAcontecimentoPartial.cshtml" />
+    <Content Include="Views\Administrativo\Partidas\_ModalDetalhesAcontecimentosPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

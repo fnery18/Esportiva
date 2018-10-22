@@ -1,0 +1,14 @@
+﻿.card-acontecimendo{
+    transition: all 1s;
+}
+
+.card-acontecimendo:hover{
+     cursor:pointer;
+     background-color: var(--color-dark-blue);
+     color: #fff;
+     border-right: none;
+}
+
+.linha-tempo{
+    color: rgba(128,128,128,0.6);
+}

@@ -98,11 +98,12 @@ namespace Esportiva.Controllers
         #region ACONTECIMENTOS / PARTIDAS
 
         [HttpGet]
-        public async Task<ActionResult> Acontecimentos(int codigoTime)
+        public async Task<PartialViewResult> Acontecimentos(int codigoTime, int codigoPartida)
         {
             var user = Session["user"].ToString();
-            var acontecimentos = await _administrativoBLL.RetornarAcontecimentos(codigoTime, user);
-            return View();
+            var acontecimento = await _administrativoBLL.RetornarAcontecimentos(codigoTime, user, codigoPartida);
+
+            return PartialView("Partidas/_ModalDetalhesAcontecimentosPartial", acontecimento);
         }
 
         [HttpGet]
