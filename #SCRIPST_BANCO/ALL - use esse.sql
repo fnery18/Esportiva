@@ -102,7 +102,8 @@ GO
 
 CREATE TABLE TipoAcontecimento(
 	Id INT PRIMARY KEY IDENTITY,
-	Nome VARCHAR(255) NOT NULL
+	Nome VARCHAR(255) NOT NULL,
+	Icone varchar(255) NOT NULL
 )
 
 
@@ -135,6 +136,7 @@ INSERT INTO TipoAcontecimento VALUES ('Chute para Fora', 'bola_fora.png')
 INSERT INTO TipoAcontecimento VALUES ('Chute para o Gol', 'gol2.png')
 INSERT INTO TipoAcontecimento VALUES ('Gol', 'gol1.png')
 
+GO
 
 /*Function*/
 CREATE FUNCTION ValidaTrocaDeTecnico (@TecnicoId int, @TimeId int)
@@ -160,13 +162,13 @@ CREATE PROCEDURE ExecutarTrocaDeTecnico @TecnicoId int, @TimeId int
 AS
 	/* Primeiro remove o tecnico do time atual dele */
 	Update Times 
-	Set Tecnico_id = null
-	where Tecnico_id = @TecnicoId
+	Set Usuario_id = null
+	where Usuario_id = @TecnicoId
 	/*Final remocao*/
 
 	/* Coloca o tecnico em outro time */
 	Update Times 
-	Set Tecnico_id = @TecnicoId
+	Set Usuario_id = @TecnicoId
 	where Id = @TimeId
 	/* final alteracao */
 GO
