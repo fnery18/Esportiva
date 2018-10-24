@@ -54,5 +54,15 @@ namespace Esportiva.BLL
         {
             return await _escalacaoDAL.RetornarRelatorioAcontecimentos(codigoTime);
         }
+
+        public async Task<bool> ExcluirJogador(int codigoJogador, string usuario)
+        {
+            var user = await _autenticacaoDAL.RetornarUsuario(usuario);
+
+            if (user != null)
+                return await _escalacaoDAL.ExcluirJogador(codigoJogador, user.Id);
+
+            return false;
+        }
     }
 }

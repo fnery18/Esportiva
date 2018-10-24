@@ -12,5 +12,6 @@ namespace Esportiva.DAL.Interfaces
         Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario);
         Task<List<TimeMOD>> RetornarAdversarios(int id);
         Task<List<RelatorioMOD>> RetornarRelatorioAcontecimentos(int codigoTime);
+        Task<bool> ExcluirJogador(int codigoJogador, int id);
     }
 }

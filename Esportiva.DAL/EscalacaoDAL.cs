@@ -144,5 +144,32 @@ namespace Esportiva.DAL
                 return await connection.QueryAsync<RelatorioMOD>(query, new { codigoTime }) as List<RelatorioMOD>;
             }
         }
+
+        public async Task<bool> ExcluirJogador(int codigoJogador, int codigoUsuario)
+        {
+            using (var connection = await ConnectionFactory.RetornarConexaoAsync())
+            {
+                #region QUERY
+
+                    const string query = @"
+                                DELETE FROM 
+	                                Jogadores
+                                WHERE 
+	                                Id 
+                                IN (
+		                                SELECT 
+			                                Jogadores.Id 
+		                                FROM 
+			                                Jogadores 
+		                                INNER JOIN Times ON Jogadores.Time_Id = times.Id
+		                                INNER JOIN Usuarios on Times.Usuario_id = Usuarios.Id
+		                                WHERE 
+			                                Usuarios.Id = @codigoUsuario AND Jogadores.Id = @codigoJogador
+	                                )";
+                #endregion
+
+                return await connection.ExecuteAsync(query, new { codigoJogador, codigoUsuario }) > 0;
+            }
+        }
     }
 }

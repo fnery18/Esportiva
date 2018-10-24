@@ -20,6 +20,26 @@ namespace Esportiva.Controllers
 
         #region JOGADORES
 
+
+        [HttpPost]
+        public async Task<ActionResult> ExcluirJogador(int codigoJogador)
+        {
+            try
+            {
+                var excluiu = await _escalacaoBLL.ExcluirJogador(codigoJogador, Session["user"].ToString());
+                if (excluiu)
+                    return Json(new { Sucesso = true, Mensagem = "Jogador excluido com sucesso!" });
+                return Json(new { Sucesso = false, Mensagem = "Ops! Ocorreu um erro." });
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { Sucesso = false, Mensagem = ex.Message });
+            }
+            
+
+        }
+
         [HttpGet]
         public async Task<ActionResult> Jogadores(int codigoTime)
         {

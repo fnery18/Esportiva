@@ -11,5 +11,6 @@ namespace Esportiva.BLL.Interfaces
         Task<bool> EditarJogador(JogadorMOD jogadorMOD, string usuario);
         Task<List<TimeMOD>> RetornarAdversarios(string usuarios);
         Task<List<RelatorioMOD>> RetornarRelatorioAcontecimentos(int codigoTime);
+        Task<bool> ExcluirJogador(int codigoJogador, string v);
     }
 }

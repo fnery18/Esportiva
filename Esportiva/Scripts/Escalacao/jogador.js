@@ -4,6 +4,30 @@
         $('#modal-jogador').modal();
     });
 
+    $(document).on('click', 'a[data-opcao="excluir-jogador"]', function () {
+        let id = $(this).data('id');
+        $('#id-jogador').val(id);
+
+        $('#modal-excluir-jogador').modal();
+    });
+
+
+    $(document).on('click', '#btn-excluir-jogador', function () {
+        $.post('/Escalacao/ExcluirJogador',
+            { "codigoJogador": $('#id-jogador').val() },
+            function (retorno) {
+                if (retorno.Sucesso) {
+                    MensagemSucesso(retorno.Mensagem);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }
+                else {
+                    MensagemErroPersonalizada(retorno.Mensagem);
+                }
+            });
+    });
+
     $(document).on('click', 'a[data-opcao="editar-jogador"]', function () {
         $('#btn-salvar-jogador').text('Editar');
         $('#txtNome').val($(this).data('nome'));
